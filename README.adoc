@@ -1,4 +1,4 @@
-= Exa-MA D7.1 Report Automation
+= Exa-MA D7.3 Report Automation
 :experimental: true
 //.Zenodo DOI
 //--
@@ -7,12 +7,12 @@
 
 .GitHub Actions Status
 --
-image::https://github.com/numpex/exa-ma-d7.1/actions/workflows/latex.yml/badge.svg["Compile Latex and Release PDF", link="https://github.com/numpex/exa-ma-d7.1/actions/workflows/latex.yml"]
+image::https://github.com/numpex/exa-ma-d7.3/actions/workflows/latex.yml/badge.svg["Compile Latex and Release PDF", link="https://github.com/numpex/exa-ma-d7.3/actions/workflows/latex.yml"]
 --
 
 == Overview
 
-This repository contains the automated workflow for compiling the Exa-MA D7.1 deliverable using LaTeX. 
+This repository contains the automated workflow for compiling the Exa-MA D7.3 deliverable using LaTeX. 
 The workflow is designed to compile LaTeX files, create PDF artifacts, and automatically release the generated document via GitHub releases. 
 We use self-hosted runners from UNISTRA labeled `self-texlive` for the LaTeX compilation process.
 
@@ -21,8 +21,8 @@ We use self-hosted runners from UNISTRA labeled `self-texlive` for the LaTeX com
 
 [source,shell]
 ----
-git clone https://github.com/numpex/exa-ma-d7.1
-cd exa-ma-d7.1
+git clone https://github.com/numpex/exa-ma-d7.3
+cd exa-ma-d7.3
 bash a.cli setup # to be done only once after you clone the repo
 ----
 
@@ -33,13 +33,13 @@ NOTE: `a.cli` is a shell script to setup the repo, create release and update bib
 .Command line to compile fully the deliverable
 [source, shell]
 ----
-latexmk --shell-escape -pdf -file-line-error -halt-on-error -interaction=nonstopmode exa-ma-d7.1.tex
+latexmk --shell-escape -pdf -file-line-error -halt-on-error -interaction=nonstopmode exa-ma-d7.3.tex
 ----
 
 .Simple command line to compile once
 [source, shell]
 ----
-pdflatex --shell-escape exa-ma-d7.1.tex
+pdflatex --shell-escape exa-ma-d7.3.tex
 ----
 
 == Zotero

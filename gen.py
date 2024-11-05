@@ -25,7 +25,6 @@ def software_prefix(sofware):
     return name.replace('+', 'p').replace(' ', '-').replace('/', '-').lower()
 
 
-
 # get boolean value of 'Yes' or 'No' for columns 
 def is_benchmarked_in(wp,row):
     # check that the string WP is in the column name

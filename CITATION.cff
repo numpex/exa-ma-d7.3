@@ -66,10 +66,10 @@ authors:
   given-names: Pierre-Henri
   affiliation: "Sorbonne Université"
   email: pierre-henri.tournier@sorbonne-universite.fr
-title: "numpex/exa-ma-d7.1 - Benchmarking Analysis Report"
+title: "numpex/exa-ma-d7.3 - Benchmarking Analysis Report"
 version: 0.0.6
 abstract: >
-  This repository contains the deliverable D7.1 for the Benchmarking Analysis Report 
+  This repository contains the deliverable D7.3 for the Benchmarking Analysis Report 
   of the Exa-MA project. 
 keywords:
   - HPC
@@ -77,7 +77,7 @@ keywords:
   - Benchmarking
 license: CC-BY-4.0
 date-released: 2024-09-27
-url: "https://github.com/numpex/exa-ma-d7.1"
+url: "https://github.com/numpex/exa-ma-d7.3"
 references:
   - type: grant
     title: Exa-MA — Methods and Algorithms for Exascale
