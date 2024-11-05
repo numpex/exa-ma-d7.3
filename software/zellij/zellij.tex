@@ -1,0 +1,141 @@
+\section{Software: Zellij}
+\label{sec:Zellij:software}
+
+\begin{table}[h!]
+    \centering
+    { \setlength{\parindent}{0pt}
+    \def\arraystretch{1.25}
+    \arrayrulecolor{numpexgray}
+    {\fontsize{9}{11}\selectfont
+    \begin{tabular}{!{\color{numpexgray}\vrule}p{.4\textwidth}!{\color{numpexgray}\vrule}p{.6\textwidth}!{\color{numpexgray}\vrule}}
+        \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Field} & {\rule{0pt}{2.5ex}\color{white}\bf Details} \\
+        \rowcolor{white}\textbf{Consortium} & \begin{tabular}{l}
+Université de Lille\\
+\end{tabular} \\
+        \rowcolor{numpexlightergray}\textbf{Exa-MA Partners} & \begin{tabular}{l}
+Inria Lille\\
+\end{tabular} \\
+        \rowcolor{white}\textbf{Contact Emails} & \begin{tabular}{l}
+el-ghazali.talbi@univ-lille.fr, thomas.firmin@univ-lille.fr  \\
+\end{tabular} \\
+        \rowcolor{numpexlightergray}\textbf{Supported Architectures} & \begin{tabular}{l}
+CPU only \\
+\end{tabular} \\
+        \rowcolor{white}\textbf{Repository} & \href{https://github.com/ThomasFirmin/zellij}{https://github.com/ThomasFirmin/zellij} \\
+        \rowcolor{numpexlightergray}\textbf{License} & \begin{tabular}{l}
+OSS: Cecill-*\\
+\end{tabular} \\
+        \rowcolor{white}\textbf{Bottlenecks roadmap} & \begin{tabular}{l}
+B7 - Exascale Algorithms\\
+B9 - Resilience, robustness, accuracy \\
+B10 - Scientific productivity \\
+\end{tabular} \\
+        \rowcolor{numpexlightergray}\textbf{Contributors} & \begin{tabular}{l}
+Thomas Firmin, El-Ghazali Talbi \\
+\end{tabular} \\
+\bottomrule
+    \end{tabular}
+    }}
+    \caption{WP5}
+\end{table}
+
+\subsection{Software summary}
+\label{sec:Zellij:summary}
+
+% Surligner l'aspect fractal 
+Zellij is a generic algorithmic framework which defines a unified view of fractal decomposition algorithms for continuous optimization. Fractals allow building a hierarchical decomposition of the decision space by using a self-similar geometrical object. 
+
+% Détailler les search components
+The proposed generic framework is made of five distinct and independent search components: fractal geometrical object, tree search, scoring, exploration and exploitation. 
+
+% Genericité - Instantiate popular algorithms from different communities machine learning SOO - global optimization DIRECT
+The genericity of the framework allowed the instantiation of popular algorithms from the optimization, machine learning and computational intelligence communities. Moreover, new optimization algorithms can be designed using various strategies of the search components. This shows the modularity of the proposed algorithmic framework.
+
+
+\subsection{Purpose}
+\label{sec:Zellij:purpose}
+
+Zellij includes a particular class of optimization algorithms, which could be classified as \textit{divide-and-conquer} strategies based on hierarchical decomposition of the search space. This class of algorithms can overcome the dimensionality problem by creating flexible, scalable and massively parallel decomposition-based algorithms for high dimensional optimization problems.
+
+This software framework has been inspired by two distinct families of decomposition-based optimization algorithms. The first one is based on algorithms derived from Lipschitzian global optimization, such as DIRECT and its various extensions (e.g. eDIRECT, BIRECT, HD-DIRECT). The second one concerns metaheuristics based on fractal decomposition, such as FRACTOP and FDA.
+
+three main properties characterize \textit{Zellij}:
+\begin{itemize}
+\item \textbf{Generalization}: our goal is to build a framework which unifies and generalizes various popular fractal decomposition-based algorithms from different communities (e.g. global optimization, reinforcement learning, computational intelligence).
+\item \textbf{Modularity}: the framework must be as modular as possible, so one can easily develop new optimization algorithms using the fractal decomposition-based approach. 
+\item \textbf{Massively parallel}: a transparent and efficient parallel implementation of the algorithms on various architectures (e.g. multicores, GPUs) is carried out. The main challenge is the parallelization of the tree search component of the framework. Many parallel tree search algorithms can be considered.
+\end{itemize}
+
+\subsection{Programming and Computational Environment}
+\label{sec::Zellij:environment_capabilities}
+
+The following table summarizes these aspects for Zellij, providing a  view of its programming and computational capabilities.
+
+\begin{table}[h!]
+    \centering
+    {
+    \setlength{\parindent}{0pt}
+    \def\arraystretch{1.25}
+    \arrayrulecolor{numpexgray}
+    {\fontsize{9}{11}\selectfont
+    \begin{tabular}{lp{.3\textwidth}p{.5\textwidth}}
+        \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Category}  & {\rule{0pt}{2.5ex}\color{white}\bf Details} & {\rule{0pt}{2.5ex}\color{white}\bf Description}\\
+        \rowcolor{white}Languages  & \begin{tabular}{l}
+Python \\
+\end{tabular} & Programming languages and language standards supported by the software \\
+        \rowcolor{numpexlightergray}Parallelism  & \begin{tabular}{l}
+MPI\\
+\end{tabular} & Parallel computing methods and frameworks utilized by the software.\\
+        \rowcolor{white}Data Formats  & \begin{tabular}{l}
+In-house format \\
+\end{tabular} & Data formats that the software can handle or produce.\\
+        \rowcolor{numpexlightergray}Resilience  & \begin{tabular}{l}
+Checkpoint restart\\
+\end{tabular} & Fault tolerance and recovery mechanisms employed by the software. \\
+        \rowcolor{white}DevOps & \begin{tabular}{l}
+None \\
+\end{tabular} & Outlines the development and operational practices including continuous integration, containerization, and testing methodologies.  \\
+        \rowcolor{numpexlightergray}Packaging  & \begin{tabular}{l}
+Github  \\
+\end{tabular} & Software packaging and distribution.\\
+        \rowcolor{white} Testing  & \begin{tabular}{l}
+Unit verification  \\
+\end{tabular} & Testing methodologies employed to ensure software quality and correctness.\\
+        \rowcolor{numpexlightergray} Containerization  & \begin{tabular}{l}
+None \\
+\end{tabular} & Container technologies used to package and deploy the software.\\
+        \rowcolor{white}Interfaces  & \begin{tabular}{l}
+None\\
+\end{tabular} & List of software Zellij has interfaces with.\\
+        \bottomrule
+    \end{tabular}
+    }}
+    \caption{Zellij programming and computational environment}
+\end{table}
+
+
+
+\subsection{Mathematics}
+\label{sec:Zellij:mathematics}
+
+Optimizing a non-linear, non-convex, derivative free, or a black-box function in a high dimensional continuous search space is a complex task. Commonly we consider a minimization problem for an objective function ${f: \mathcal{S} \subset \mathbb{R}^n \rightarrow \mathbb{R}}$:
+\begin{equation} \label{eq:minproblem}
+ \hat{x} \in \arg\min_{x \in \mathcal{S}}f(x) 
+\end{equation}
+where $\hat{x}$ is the global optima, $f$ the objective function, and $\mathcal{S}$ a compact set made of inequalities (e.g. upper and lower bounds of the search space). 
+
+
+\subsection{Relevant Publications}
+\label{sec:Zellij:publications}
+
+Here is a list of relevant publications related to the software:
+
+\begin{itemize}
+   \item \fullcite{firmin_massively_2023}
+   \item \fullcite{firmin_comparative_2023}
+\end{itemize}
+
+\subsection{Acknowledgements}
+\label{sec::Zellij:acknowledgements}
+
+The software has been developed with the support of the following funding agencies and institutions: Universiy of Lille and INRIA.

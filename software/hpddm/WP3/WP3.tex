@@ -1,0 +1,150 @@
+\section{Software: HPDDM}
+\label{sec:WP3:HPDDM:software}
+
+\begin{table}[h!]
+    \centering
+    { \setlength{\parindent}{0pt}
+    \def\arraystretch{1.25}
+    \arrayrulecolor{numpexgray}
+    {\fontsize{9}{11}\selectfont
+    \begin{tabular}{!{\color{numpexgray}\vrule}p{.4\textwidth}!{\color{numpexgray}\vrule}p{.6\textwidth}!{\color{numpexgray}\vrule}}
+        \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Field} & {\rule{0pt}{2.5ex}\color{white}\bf Details} \\
+        \rowcolor{white}\textbf{Consortium} & \begin{tabular}{l}
+None\\
+\end{tabular} \\
+        \rowcolor{numpexlightergray}\textbf{Exa-MA Partners} & \begin{tabular}{l}
+Inria PARIS\\
+Sorbonne U\\
+\end{tabular} \\
+        \rowcolor{white}\textbf{Contact Emails} & \begin{tabular}{l}
+pierre@joliv.et\\
+\end{tabular} \\
+        \rowcolor{numpexlightergray}\textbf{Supported Architectures} & \begin{tabular}{l}
+CPU or GPU\\
+\end{tabular} \\
+        \rowcolor{white}\textbf{Repository} & \href{https://github.com/hpdomain decomposition methods/hpdomain decomposition methods}{https://github.com/hpdomain decomposition methods/hpdomain decomposition methods} \\
+        \rowcolor{numpexlightergray}\textbf{License} & \begin{tabular}{l}
+OSS:: LGPL v*\\
+\end{tabular} \\
+        \rowcolor{white}\textbf{Bottlenecks roadmap} & \begin{tabular}{l}
+B10 - Scientific Productivity\\
+B11 - Reproducibility and Replicability of Computation\\
+B6 - Data Management\\
+B7 - Exascale Algorithms\\
+\end{tabular} \\
+        \bottomrule
+    \end{tabular}
+    }}
+    \caption{WP3: HPDDM Information}
+\end{table}
+
+\subsection{Software Overview}
+\label{sec:WP3:HPDDM:summary}
+
+In~\cref{tab:WP3:HPDDM:features} we provide a summary of the software features relevant to the work package which are briefly discussed.
+
+\begin{table}[h!]
+    \centering
+    { 
+        \setlength{\parindent}{0pt}
+        \def\arraystretch{1.25}
+        \arrayrulecolor{numpexgray}
+        {
+            \fontsize{9}{11}\selectfont
+            \begin{tabular}{!{\color{numpexgray}\vrule}p{.25\linewidth}!{\color{numpexgray}\vrule}p{.6885\linewidth}!{\color{numpexgray}\vrule}}
+    
+    \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Features} &  {\rule{0pt}{2.5ex}\color{white}\bf Short Description }\\ 
+    
+\rowcolor{white}    reuse of Krylov subspaces for multiple right-hand sides & By reusing information from previously computed Krylov subspaces, such as the basis vectors, the computational cost is reduced, and convergence can be faster. This is particularly useful in applications like time-dependent simulations, parametric studies. \\
+\rowcolor{numpexlightergray}    domain decomposition methods & Numerical techniques used to solve large-scale problems, typically arising from the discretization of partial differential equations (PDEs), by dividing the problem domain into smaller subdomains. Each subdomain is solved independently, often in parallel, and then the solutions are combined to obtain the global solution.\\
+\rowcolor{white}    interface & This ensures that various Exa-MA libraries can work together efficiently, sharing data and results. It typically involves standardized APIs, data formats, and compatibility protocols to enable seamless integration.\\
+\rowcolor{numpexlightergray}    low-rank & Approximation of large, complex matrices with simpler matrices that have lower ranks, while preserving their most important features. \\
+\rowcolor{white}    multi-precision & Performing numerical calculations with variable precision, beyond the standard single or double precision typically used in computing. It allows for higher or lower levels of precision depending on the needs of the problem, enabling more accurate results for sensitive computations or faster performance when lower precision is sufficient. \\
+\rowcolor{numpexlightergray}    randomization & Random sampling techniques to approximate solutions to large-scale matrix problems more efficiently. By leveraging randomness, algorithms can reduce the computational cost and memory requirements of tasks such as matrix decompositions \\
+\end{tabular}
+        }
+    }
+    \caption{WP3: HPDDM Features}
+    \label{tab:WP3:HPDDM:features}
+\end{table}
+
+
+\subsection{Parallel Capabilities}
+\label{sec:WP3:HPDDM:performances}
+
+
+\begin{itemize}
+    \item MPI, OpenMP, and CUDA.
+    \item Most French supercomputers from GENCI, Fugaku@RIKEN, and other supercomputers worldwide (mostly when used through PETSc).
+    \item The library relies on already-distributed inputs, e.g., a matrix, it cannot be used to do the data-decomposition itself.
+    \item \textbf{Scalability:} multi-level domain decomposition methods are highly scalable numerically with a very aggressive coarsening factor (compared to, e.g., multigrid methods). Special care must be taken to implement these efficiently, for example to ensure proper load-balancing.
+    \item \textbf{Integration with Other Systems:} through its interface to PETSc and FreeFEM, the software is readily integrated in other higher-level library used by others from the Exa-MA framework.
+\end{itemize}
+
+
+\subsection{Initial Performance Metrics}
+\label{sec:WP3:HPDDM:metrics}
+
+\begin{itemize}
+    \item \textbf{Overall Performance:} The scalability of the library in its current state has been advertised on numerous occasion. As part of the Exa-MA framework, we will provide a standalone benchmark detailed next.
+    \item \textbf{Input/Output Dataset:}
+        \begin{itemize}
+            \item Input matrix and right-hand side in PETSc binary format.
+            \item Output solution vector in PETSc binary format.
+        \end{itemize}
+    \item \textbf{open-data Access:} The files will be made open-source, though they aren't currently.
+    \item \textbf{Challenges:} Scalable input/output for large process counts, proper parameters for multi-level preconditioning.
+    \item \textbf{Future Improvements:} Setting suitable default parameters for building efficient multi-level domain decomposition preconditioners.
+\end{itemize}
+
+\subsubsection{Benchmark \#1}
+\begin{itemize}
+    \item \textbf{Description:} A discrete fracture network (DFN) is a modeling approach used to represent the geometry and connectivity of fractures in rock masses. It treats fractures as discrete features within a larger rock domain, often simulating the flow of fluids or transport of particles through these fractures. This requires the solution of large symmetric positive definite systems, with hundreds of millions of unknowns.
+    \item \textbf{Benchmarking Tools Used:} PETSc \verb!-log_view! will be used to measure execution time and FLOPS.
+%    \item \textbf{Input/Output Dataset Description:}
+%        \begin{itemize}
+%            \item \textbf{Input Data:} Describe the input dataset (size, format, data type) and provide a DOI or link to access it.
+%            \item \textbf{Output Data:} Specify the structure of the results (e.g., memory usage, runtime logs) and how they can be accessed or replicated.
+%            \item \textbf{Data Repository:} Indicate where the data is stored (e.g., Zenodo, institutional repository) and provide a DOI or URL for accessing the data.
+%        \end{itemize}
+%    \item \textbf{Results Summary:} Include a summary of key metrics (execution time, memory usage, FLOPS) and their comparison across architectures (e.g., CPU, GPU).
+%    \item \textbf{Challenges Identified:} Describe any bottlenecks encountered (e.g., memory usage, parallelization inefficiencies) and how they impacted the benchmark.
+\end{itemize}
+
+\subsection{12-Month Roadmap}
+\label{sec:WP3:HPDDM:roadmap}
+
+\begin{itemize}
+    \item \textbf{Data Improvements:} Modify \verb!PCView_HPDDM()! to avoid writing three files per subdomain, but instead a single file for all the subdomains, with the data grouped into a single \verb!Mat! and single \verb!IS!. This will greatly reduce the number of input/output operations.
+    \item \textbf{Methodology Application:} Make sure that HPDDM can handle matrices store on device using cuSparse.
+    \item \textbf{Results Retention:} Online on GitHub in the NumPEx organization.
+\end{itemize}
+
+In~\cref{tab:WP3:HPDDM:bottlenecks}, we briefly discuss the bottleneck roadmap associated to the software and relevant to the work package.
+
+\begin{table}[h!]
+    \centering
+    
+    
+
+    \centering
+    { 
+        \setlength{\parindent}{0pt}
+        \def\arraystretch{1.25}
+        \arrayrulecolor{numpexgray}
+        {
+            \fontsize{9}{11}\selectfont
+            \begin{tabular}{!{\color{numpexgray}\vrule}p{.25\linewidth}!{\color{numpexgray}\vrule}p{.6885\linewidth}!{\color{numpexgray}\vrule}}
+    
+    \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Bottlenecks} &  {\rule{0pt}{2.5ex}\color{white}\bf Short Description }\\ 
+    
+\rowcolor{white}    B10 - Scientific Productivity & provide suitable default parameters to make preconditioners easier to use \\
+                \rowcolor{numpexlightergray}    B11 - Reproducibility and Replicability of Computation & ensure randomized algorithms within the preconditioner are sharp enough to not hinder the global (outer) convergence \\
+\rowcolor{white}    B6 - Data Management & keep the volume of data reasonable and make sure the inputs and outputs can be reused among different architectures \\
+\rowcolor{numpexlightergray}    B7 - Exascale Algorithms & multi-level preconditioning and efficient porting of subdomain solvers on accelerators \\
+\end{tabular}
+        }
+    }
+    \caption{WP3: HPDDM plan with Respect to Relevant Bottlenecks}
+    \label{tab:WP3:HPDDM:bottlenecks}
+\end{table}
