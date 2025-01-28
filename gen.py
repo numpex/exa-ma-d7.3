@@ -156,6 +156,80 @@ def generate_latex_table_simple(input_string, strip=True):
 
     return latex_code
 
+def generate_latex_training_table(software_name, training_string):
+    """
+    Generates a two-column LaTeX table for training items.
+    Each row: [Training Category | Short Description].
+    """
+    # If your training column is empty or NaN:
+    if pd.isnull(training_string) or training_string.strip() == "":
+        return "No training information provided."
+
+    # Define short descriptions for each training type
+    training_descriptions = {
+        "Documentation": "User manuals, reference guides, etc.",
+        "Tutorials": "Hands-on tutorials or step-by-step guides.",
+        "Initial Training": "Undergraduate or entry-level academic courses.",
+        "Initial Training::Bachelor": "Bachelor-level academic courses.",
+        "Initial Training::Master 1": "Master 1-level academic courses.",
+        "Initial Training::Master 2": "Master 2-level academic courses.",
+        "Initial Training::Doctoral School": "Doctoral-level sessions or schools.",
+        "Continuing Training": "Professional or continuing education sessions.",
+        "Genci": "Training sessions organized by GENCI.",
+        "EuroHPC/Prace": "EuroHPC or PRACE-sponsored events and trainings.",
+        "SIAM": "Conferences or specialized training under SIAM.",
+        "Supercomputing/BoF": "Birds-of-a-Feather sessions or workshops at Supercomputing.",
+        "CoE": "Center of Excellence training sessions.",
+        "CEA/INRIA/EDF": "Trainings jointly organized by CEA, INRIA, or EDF."
+    }
+
+    # Split the software’s training string by commas
+    items = [item.strip() for item in training_string.split(",") if item.strip()]
+
+    # Build the LaTeX table
+    latex_table = r"""
+\begin{table}[!ht]
+    \centering
+    {
+    \setlength{\parindent}{0pt}
+    \def\arraystretch{1.25}
+    \arrayrulecolor{numpexgray}
+    {\fontsize{9}{11}\selectfont
+    \begin{tabular}{!{\color{numpexgray}\vrule}p{0.20\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.40\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.35\textwidth}
+                    !{\color{numpexgray}\vrule}}
+    \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Training Category} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf Description} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf URL/Links} \\
+"""
+
+    # Alternate row colors like in your other tables
+    row_colors = ["white", "numpexlightergray"]
+    color_index = 0
+
+    for idx, item in enumerate(items):
+        # If you have a short description in the dict, use it; otherwise fallback
+        desc = training_descriptions.get(item, "No description available.")
+        #  the devs will later fill out the column with the actual links
+        link_col = "provide url/links to training"
+
+        # Output row
+        latex_table += (
+            f"\\rowcolor{{{row_colors[color_index]}}}"
+            f"{item} & {desc} & {link_col} \\\\\n"
+        )
+        # Flip color index
+        color_index = 1 - color_index
+
+    latex_table += r"""\bottomrule
+    \end{tabular}
+    }}
+    \caption{""" + f"{software_name} Training" + r"""}
+\end{table}
+"""
+
+    return latex_table
 # Apply functions to create new columns based on 'DevOps'
 benchmarked_software['CI'] = benchmarked_software.apply(lambda row: check_ci(row), axis=1)
 benchmarked_software['Packaging'] = benchmarked_software.apply(lambda row: check_packaging(row), axis=1)
@@ -610,9 +684,15 @@ software_list["software"] = ""
 for index,software in benchmarked_software.iterrows():
     software_json = json.loads(software.to_json())
     software_json['name'] = software['Software']
-    for column_name in ['Emails','Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience','Interfaces']:
+    for column_name in ['Emails','Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience','Interfaces', 'Training']:
         software_json[column_name] = generate_latex_table_simple(
             input_string=software[column_name])
+    # Generate the training table if "Training" column exists
+    training_table_latex = generate_latex_training_table(
+            software_name=software["Software"],
+            training_string=software["Training"] if "Training" in software else ""
+    )
+    software_json["TrainingTable"] = training_table_latex
     desc = template_desc.render(software= software_json)
     name = software['Software']
     prefix = software_prefix(software)
@@ -633,7 +713,7 @@ for index,software in benchmarked_software.iterrows():
                 desc="Features", input_string=software[category])
             software_json['BottlenecksT'] = generate_latex_table(
                 desc="Bottlenecks", input_string=software['Bottlenecks'])
-            for column_name in ['Emails', 'Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience', 'Interfaces']:
+            for column_name in ['Emails', 'Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience', 'Interfaces', 'Training']:
                 software_json[column_name] = generate_latex_table_simple(
                     input_string=software[column_name])
             software_json['Emails'] = generate_latex_table_simple(
@@ -657,21 +737,21 @@ with open('chapters/software.tex', 'w') as f:
 # sort latex_content_per_category with respect to category in lexical order
 latex_content_per_category = dict(sorted(latex_content_per_category.items()))
 # Now, generate a .tex file for each category containing all relevant software entries
-with open('chapters/00-index.tex', 'a') as main_index:
-    for category, software_list in latex_content_per_category.items():
-        # create the directory for the category
-        os.makedirs(f'chapters/{category}', exist_ok=True)
-        main_index.write('\chapter{'+f'{WPs[category]}'+'}\n')
-        main_index.write('\clearpage\n\subimport{'+f'./{category}'+'}{00-index}\n\n')
-        with open(f'chapters/{category}/00-index.tex', 'w') as index:
-            for i,software in benchmarked_software.iterrows():
-                #software_json = software.to_json()
-                #name = software['Software']
-
-                prefix = software_prefix(software)
-                #content_list = software['wp']
-                # include the software in the category file
-                if is_benchmarked_in(category,software):
-                    index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
-                #index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
+# with open('chapters/00-index.tex', 'a') as main_index:
+#     for category, software_list in latex_content_per_category.items():
+#         # create the directory for the category
+#         os.makedirs(f'chapters/{category}', exist_ok=True)
+#         main_index.write('\chapter{'+f'{WPs[category]}'+'}\n')
+#         main_index.write('\clearpage\n\subimport{'+f'./{category}'+'}{00-index}\n\n')
+#         with open(f'chapters/{category}/00-index.tex', 'w') as index:
+#             for i,software in benchmarked_software.iterrows():
+#                 #software_json = software.to_json()
+#                 #name = software['Software']
+# 
+#                 prefix = software_prefix(software)
+#                 #content_list = software['wp']
+#                 # include the software in the category file
+#                 if is_benchmarked_in(category,software):
+#                     index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
+#                 #index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
 
