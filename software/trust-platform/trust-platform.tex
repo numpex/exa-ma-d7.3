@@ -1,9 +1,10 @@
-\section{Software: TRUST Platform}
-\label{sec:TRUST Platform:software}
+%!TEX root = ../../exa-ma-d7.3.tex
+\subsection{Software: TRUST Platform}
+\label{sec:TRUST Platform:software:training}
 
 
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     { \setlength{\parindent}{0pt}
     \def\arraystretch{1.25}
@@ -30,111 +31,58 @@ GPU Only\\
 OSS::\\
 OSS::BSD\\
 \end{tabular} \\
-        \rowcolor{white}\textbf{Bottlenecks roadmap} & \begin{tabular}{l}
-B10 - Scientific Productivity\\
-B11 - Reproducibility and Replicability of Computation\\
-B6 - Data Management\\
-B7 - Exascale Algorithms\\
+        \rowcolor{white}\textbf{Training} & \begin{tabular}{l}
+Documentation\\
+Tutorials\\
 \end{tabular} \\
         \bottomrule
     \end{tabular}
-    }}
-    \caption{TRUST Platform Information}
-\end{table}
-
-\subsection{Software summary}
-\label{sec:TRUST Platform:summary}
-
-TRUST is a High Performance Computing (HPC) platform tool developed by the CEA since 1993. Initially designed for nuclear applications, TRUST has evolved to tackle a range of thermohydraulic challenges, from one-phase to multi-phase flows. It offers various numerical methods and supports different mesh types for efficient computation on diverse computing platforms, including high-performance computers. Recently, efforts have been made to integrate GPU computing libraries like AmgX, rocALUTION, and Kokkos aiming for a hybrid CPU/GPU code achieving better performance portability. This software is OpenSource (BSD license), available on GitHub.
-
-\subsection{Purpose}
-\label{sec:TRUST Platform:purpose}
-
-TRUST can be used as a standalone generic simulation software, or serves as a kernel for several independent private projects. As all the base classes and numerical methods are available in TRUST, building an application for a specific domain becomes easier by basing the project on the platform. This is known as Build an Application Linked to TRUST Kernel (BALTIK). Such a specialized application allows for example to extend the TRUST functionalities for low scale turbulent multi-phase simulations (TrioCFD code), component-scale simulations (e.g. 3D module of CATHARE code), or even non-nuclear application, like batteries and fuel-cell (PEMFC) simulations (and many other CEA internal codes).
-
-\subsection{Programming and Computational Environment}
-\label{sec::TRUST Platform:environment_capabilities}
-
-
-The following table summarizes these aspects for TRUST Platform, providing a  view of its programming and computational capabilities.
-
-\begin{table}[h!]
-    \centering
+    
+%%\begin{table}[!ht]
+%%    \centering
     {
     \setlength{\parindent}{0pt}
     \def\arraystretch{1.25}
     \arrayrulecolor{numpexgray}
     {\fontsize{9}{11}\selectfont
-    \begin{tabular}{lp{.3\textwidth}p{.5\textwidth}}
-        \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Category}  & {\rule{0pt}{2.5ex}\color{white}\bf Details} & {\rule{0pt}{2.5ex}\color{white}\bf Description}\\
-        \rowcolor{white}Languages  & \begin{tabular}{l}
-C++\\
-\end{tabular} & TRUST is developped in C++17 (300K loc) \\
-        \rowcolor{numpexlightergray}Parallelism  & \begin{tabular}{l}
-GPU\\
-MPI\\
-\end{tabular} & MPI is used for parallelization on the CPU host. For acceleration on GPU devices, we use a mix of OpenMP-target directives (soon deprecated) and the Kokkos framework. \\
-        \rowcolor{white}Data Formats  & \begin{tabular}{l}
-HDF5\\
-MED\\
-VTK\\
-in-house format\\
-\end{tabular} & Parallel HDF5 is the format for checkpoint/restart files. MED format is used for data exchange between codes. VTK and in-house format are the choices for post-processing files. \\
-        \rowcolor{numpexlightergray}Resilience  & \begin{tabular}{l}
-Checkpoint restart\\
-\end{tabular} & We have a recovery mechanism to restart a calculation, but no fault tolerance mechanism yet. \\
-        \rowcolor{white}DevOps & \begin{tabular}{l}
-Continuous Integration\\
-\end{tabular} & TRUST team use Tuleap and GitHub repos. The continous integration is done with in-house scripts to perform automatic builds on various platforms and non-regression testing. \\
-        \rowcolor{numpexlightergray}Packaging  & \begin{tabular}{l}
-None\\
-\end{tabular} & No specific packaging.\\
-        \rowcolor{white}Testing  & \begin{tabular}{l}
-Unit\\
-Verification\\
-\end{tabular} & We have numerous test cases to check the non-regression. Besides, V\&V may be checked regulary thanks to PDF reports automatically produced by Jupyter notebooks. \\
-        \rowcolor{numpexlightergray}Containerization  & \begin{tabular}{l}
-None\\
-\end{tabular} & No container yet. \\
-        \rowcolor{white}Interfaces  & \begin{tabular}{l}
-None\\
-\end{tabular} & TRUST platform is interfaced with Gmsh and VisIt tools, Kokkos, PETSc, MED, CGNS, AmgX, rocALUTION libraries. \\
-        \bottomrule
+    \begin{tabular}{!{\color{numpexgray}\vrule}p{0.20\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.40\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.35\textwidth}
+                    !{\color{numpexgray}\vrule}}
+    \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Training Category} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf Description} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf URL/Links} \\
+\rowcolor{white}Documentation & User manuals, reference guides, and detailed usage instructions. & provide url/links to training \\
+\rowcolor{numpexlightergray}Tutorials & Hands-on or step-by-step guides for newcomers and practitioners. & provide url/links to training \\
+\bottomrule
     \end{tabular}
     }}
-    \caption{TRUST Platform programming and computational environment}
+%    \caption{TRUST Platform Training}
+%\end{table}
+
+    }}
+    \caption{TRUST Platform Information}
 \end{table}
 
 
-
-\subsection{Mathematics}
-\label{sec:TRUST Platform:mathematics}
-Solving a TRUST problem requires to select a certain discretization which allows the code to pass the treated equations from a continuous to a discretized form.
-Four discretizations are available:
-
-\begin{itemize}
-\item \textbf{Finite Volume Difference (VDF) discretization}: It is the simplest and the most performant discretization of the TRUST plaform. This discretization is compatible with conform mesh with hexahedral type of elements. As stated by its name, the VDF is a conservative finite volume scheme of Marker-and-Cell (MAC) type. The discretization of each term of the equation is performed by integrating over a control volume. The diffusion gradient terms are approximated by a linear difference equation. All scalars are stored at the center of each control volume except the velocity field which is defined on a staggered mesh.
-
-\item \textbf{Finite Element Volume (VEF) discretization}: It is used when the mesh is conform but with tetrahedral elements (triangles in 2D). This numerical scheme combines finite volume and finite elements to integrate in conservative form all conservation equations over the control volumes belonging to the calculation domain. As in the classical Crouzeix–Raviart element, both vector and scalar quantities are located at the centers of the faces. The pressure, however, is located at the vertices and at the center of gravity of a tetrahedral element (in 3D, triangles in 2D). This discretization leads to very good pressure/velocity coupling and has a very dense divergence free basis. Along this staggered mesh arrangement, the unknowns, i.e. the vector and scalar values, are expressed using non-conforming linear shape-functions (P1-nonconforming). The shape function for the pressure is constant for the center of the element (P0) and linear for the vertices (P1).
-
-\item \textbf{PolyMAC-series discretization}: It is a series of Marker-and-Cell (MAC) schemes that can handle any type of mesh (non-conform, non-orthogonal, poly-hedral types, …). The numerical description of this schemes is quite complex and depends on the employed version.
-
-\item \textbf{Finite Element (EF) discretization}: It implements a classical finite element method.
-\end{itemize}
-
-\subsection{Relevant Publications}
-\label{sec:TRUST Platform:publications}
-
-Here is a list of relevant publications related to the software:
+\paragraph{Additional Details:}
+\begin{description}
+\item[\textbf{Documentation}] % start of item
+\emph{Short Description: User manuals, reference guides, and detailed usage instructions.}
 
 \begin{itemize}
-   \item \fullcite{calvin_object-oriented_2002}. It's the original paper for the Trio\_U platform, previous name of TRUST, describing the C++ choices and parallel capabilities for the code.
-   \item \fullcite{saikali_highly_2019}. It describes the first TRUST simulation (DNS) using 50K cores in context of safety assessment of systems using hydrogen.
-   \item \fullcite{angeli_wall-resolved_2022}. Large Eddy Simulation of a pressurized thermal shock into a PWR downcomer: numerical study with TrioCFD a TRUST based CFD application.
+  \item Which topics are covered (installation, usage, performance tuning, advanced features)?
+  \item What will be the final format (PDF, Wiki, Jupyter notebooks, web pages)?
+  \item What is the expected timeline or milestone for completing the documentation?
 \end{itemize}
 
-\subsection{Acknowledgements}
-\label{sec::TRUST Platform:acknowledgements}
+\item[\textbf{Tutorials}] % start of item
+\emph{Short Description: Hands-on or step-by-step guides for newcomers and practitioners.}
 
-The software has been developed by the CEA (Commissariat à l'énergie atomique et aux énergies alternatives). 
+\begin{itemize}
+  \item Which modules or steps are included (environment setup, HPC job submission, scaling tests, performance benchmarks)?
+  \item Who is the main target audience (undergraduates, HPC engineers, domain scientists)?
+  \item Is there a link to any draft or existing tutorial materials?
+\end{itemize}
 
+\end{description}

@@ -1,0 +1,146 @@
+%!TEX root = ../exa-ma-d7.3.tex
+\section{Training Strategy Overview}
+\label{sec:strategy}
+%---------------------------------------
+
+The Exa-MA training strategy aims to \textbf{effectively disseminate} new exascale-ready methods and software to a diverse set of end-users. By leveraging a combination of academic partnerships, industrial outreach, and open-source platforms, we ensure that our methods are widely understood, tested, and applied in relevant use cases. This section defines our key target audiences, outlines the range of delivery formats and core topics we prioritize, and indicates major milestones for training deliverables.
+
+\subsection{Target Audiences}
+Exa-MA’s training efforts are designed to serve:
+\begin{itemize}
+    \item \textbf{Undergraduate \& Master’s students:} 
+    They receive an introduction to parallel programming, HPC fundamentals, and the basic principles of exascale bottlenecks. In some cases, project-based courses might showcase simplified Exa-MA mini-apps.
+    \item \textbf{Doctoral researchers:} 
+    Focus on more advanced topics like communication-avoiding algorithms, domain decomposition methods, surrogate modeling, data assimilation, and HPC best practices. Doctoral schools can leverage Exa-MA training materials for specialized seminars or intensive schools.
+    \item \textbf{HPC engineers \& developers:} 
+    Professionals responsible for deploying and optimizing HPC applications at large scale—emphasizing new Exa-MA software stacks, performance profiling, and numerical methods adaptation.
+    \item \textbf{Industrial R\&D teams:} 
+    Addressing engineering challenges (e.g., shape optimization, uncertainty quantification) that demand exascale-level solutions. Training here often highlights real-world mini-apps and robust code integration practices.
+    \item \textbf{Academic \& research institutions:} 
+    Scholars in applied mathematics, computational science, or HPC domains who can adopt and extend Exa-MA solutions in their own research frameworks.
+\end{itemize}
+
+
+\subsection{Delivery Formats and Core Topics}
+
+\paragraph{Delivery Formats.}
+To reach these various audiences, Exa-MA employs multiple training mechanisms:
+\begin{itemize}
+    \item \textbf{Workshops \& Tutorials:} 
+    Short intensive sessions at HPC conferences, or standalone events co-located with Exa-MA meetings. Topics include domain decomposition, reduced-order modeling, large-scale linear algebra, etc.
+    \item \textbf{Seminars \& Webinars:}
+    Regular virtual talks or short presentations that showcase recent progress and best practices, with Q\&A sessions for deeper engagement.
+    \item \textbf{Online Materials:}
+    \begin{itemize}
+        \item \textit{Video lectures} explaining exascale bottlenecks and solutions (B1--B13).
+        \item \textit{GitHub repositories} of sample codes, HPC scripts, and Jupyter notebooks illustrating advanced methods.
+        \item \textit{Documentation portals} describing how to install, run, and optimize Exa-MA software stacks.
+    \end{itemize}
+    \item \textbf{Hackathons \& Hands-on Labs:}
+    Focused sessions where participants learn by adapting Exa-MA software to specific HPC environments, guided by WP7 and software maintainers.
+\end{itemize}
+
+\paragraph{Core Topics.}
+Each training resource covers one or more of Exa-MA’s \textit{core research areas}:
+\begin{itemize}
+    \item \textbf{Discretization and Adaptive Meshing (WP1):}
+    Large-scale mesh generation, high-order methods, nonconforming domain decomposition, adaptive refinements.
+    \item \textbf{Model Order Reduction \& Surrogate Methods (WP2):}
+    Data-driven and physics-based surrogates (e.g., PINNs, neural operators), enabling near real-time simulations.
+    \item \textbf{Robust Solvers and Multi-Physics (WP3):}
+    Domain decomposition preconditioners, communication-avoiding Krylov methods, multi-physics coupling strategies.
+    \item \textbf{Inverse Problems \& Data Assimilation (WP4):}
+    Variational approaches at exascale, time-parallel methods, handling sparse and uncertain observation data.
+    \item \textbf{Optimization (WP5):}
+    Large-scale combinatorial and shape optimization, surrogate-based approaches, parallel heuristics.
+    \item \textbf{Uncertainty Quantification (WP6):}
+    Sensitivity analysis, advanced sampling, scalable PDE-based UQ frameworks.
+\end{itemize}
+Additionally, cross-cutting themes like reproducibility, resilience and energy efficiency (B1--B13 bottlenecks) should underpin each tutorial or workshop. 
+
+\subsection{Collaborations with HPC Entities and Events}
+
+An integral part of our strategy is to align Exa-MA training activities with established HPC events and to collaborate with well-known HPC organizations. 
+By doing so, we can (i) leverage existing infrastructure and communities, 
+(ii) exchange best practices on cutting-edge exascale methods, 
+and (iii) widen the reach of our training materials beyond the immediate Exa-MA consortium. 
+
+Possible collaborations with HPC entities and events are listed in Table~\ref{tab:hpc-events-entities}, which provides a quick overview of relevant conferences, funding agencies, and centers of excellence that regularly host or sponsor HPC training programs.
+
+
+Possible collaborations with HPC entities and events are listed in Table~\ref{tab:hpc-events-entities}.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{p{3.2cm} p{3.2cm} p{4.1cm} p{3.3cm}}
+    \toprule
+    \textbf{Event / Entity} & \textbf{Scope / Focus} & \textbf{Typical Dates or Activities} & \textbf{Website / Contact} \\
+    \midrule
+    \textbf{ISC High Performance} 
+      & HPC and supercomputing in Europe 
+      & Annual conference (June); workshops, tutorials 
+      & \href{https://www.isc-hpc.com/}{isc-hpc.com} \\
+    
+    \textbf{SC (Supercomputing)} 
+      & HPC, AI, data analytics, exascale 
+      & Annual conference (November); large tutorial program 
+      & \href{https://sc22.supercomputing.org/}{supercomputing.org} \\
+    
+    \textbf{Euro-Par} 
+      & Parallel processing, HPC software 
+      & Annual conference (late August / early September) 
+      & \href{https://www.euro-par.org/}{euro-par.org} \\
+    
+    \textbf{SIAM CSE} 
+      & Computational science and engineering 
+      & Biennial conference (February/March); minisymposia, tutorials 
+      & \href{https://www.siam.org/conferences/cm/conference/cse23}{siam.org} \\
+    
+    \textbf{GENCI (France)} 
+      & National HPC resource allocation (France) 
+      & Regular calls for compute time; HPC training 
+      & \href{https://www.genci.fr/en}{genci.fr} \\
+    
+    \textbf{PRACE (Europe)} 
+      & European HPC resource provider 
+      & Regular calls for compute projects, training events, summer schools 
+      & \href{https://prace-ri.eu/}{prace-ri.eu} \\
+    
+    \textbf{NCSA, TGCC, IDRIS, CINES (France)} 
+      & National HPC centers 
+      & Various HPC courses, expert support for code scaling 
+      & \href{https://www.idris.fr/}{idris.fr}, etc. \\
+    
+    \textbf{EuroHPC JU} 
+      & Europe-wide HPC/Exascale Joint Undertaking 
+      & Funding programs, infrastructure, training calls 
+      & \href{https://eurohpc-ju.europa.eu/}{eurohpc-ju.europa.eu} \\
+
+      \textbf{EuroHPC CoEs} 
+      & Domain-specific HPC \newline Centers of Excellence 
+      & Ongoing HPC research, \newline co-design, training 
+      & \href{https://eurohpc-ju.europa.eu/activities/centres-excellence}{eurohpc-ju.europa.eu} \\
+    
+    
+    \bottomrule
+    \end{tabular}
+    \caption{Potential HPC Events and Entities for Exa-MA Collaboration and Training}
+    \label{tab:hpc-events-entities}
+    \end{table}
+
+By participating in these events (e.g., organizing dedicated tutorials or contributing Exa-MA mini-app demonstrations), we will ensure that our training content reaches the broad HPC community.
+
+\subsection{Timeline and Milestones}
+Exa-MA training activities are synchronized with the overall project’s lifecycle and reporting deadlines:
+\begin{itemize}
+    \item \textbf{M12 (this deliverable):} 
+    Establish baseline materials (tutorial slides, initial user guides), compile early feedback, begin outreach to academic programs.
+    \item \textbf{M24:}
+    Release updated content reflecting progress in HPC libraries, advanced exascale features (e.g., GPU offloading), and new synergy with other NumPEx components.
+    \item \textbf{M36 \& M48:}
+    Expand the range of hands-on materials (mini-app demonstrations, co-design examples), address user feedback more systematically, organize intermediate workshops.
+    \item \textbf{M60:}
+    Final stage of the training program, ensuring a robust and sustainable set of teaching and documentation resources that remain accessible beyond the project’s formal end.
+\end{itemize}
+
+By staging deliverables and workshops in sync with these milestones, the project can steadily enrich its training repertoire, capture lessons learned, and maintain strong engagement with both academic and industrial stakeholders.

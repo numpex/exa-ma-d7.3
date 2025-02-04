@@ -1,9 +1,10 @@
-\section{Software: HPDDM}
-\label{sec:HPDDM:software}
+%!TEX root = ../../exa-ma-d7.3.tex
+\subsection{Software: HPDDM}
+\label{sec:HPDDM:software:training}
 
 
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     { \setlength{\parindent}{0pt}
     \def\arraystretch{1.25}
@@ -24,127 +25,84 @@ pierre@joliv.et\\
         \rowcolor{numpexlightergray}\textbf{Supported Architectures} & \begin{tabular}{l}
 CPU or GPU\\
 \end{tabular} \\
-        \rowcolor{white}\textbf{Repository} & \href{https://github.com/hpddm/hpddm}{https://github.com/hpddm/hpddm} \\
+        \rowcolor{white}\textbf{Repository} & \href{https://github.com/hpdomain decomposition methods/hpdomain decomposition methods}{https://github.com/hpdomain decomposition methods/hpdomain decomposition methods} \\
         \rowcolor{numpexlightergray}\textbf{License} & \begin{tabular}{l}
 OSS:: LGPL v*\\
 \end{tabular} \\
-        \rowcolor{white}\textbf{Bottlenecks roadmap} & \begin{tabular}{l}
-B10 - Scientific Productivity\\
-B11 - Reproducibility and Replicability of Computation\\
-B6 - Data Management\\
-B7 - Exascale Algorithms\\
+        \rowcolor{white}\textbf{Training} & \begin{tabular}{l}
+CEA/INRIA/EDF\\
+Documentation\\
+SIAM\\
+Tutorials\\
 \end{tabular} \\
         \bottomrule
     \end{tabular}
-    }}
-    \caption{HPDDM Information}
-\end{table}
-
-\subsection{Software summary}
-\label{sec:HPDDM:summary}
-
-HPDDM (High-Performance unified framework for Domain Decomposition Methods) is a library of
-advanced Krylov methods and multilevel domain decomposition methods, used as preconditioners, designed for high-performace computing.
-The available Krylov methods include CG, block CG, GMRES, and block GMRES.
-The available domain decomposition methods include one- and multi-level restricted additive Schwarz (RAS) methods.
-The efficiency of these methods has been shown on elliptic PDEs such as the scalar diffusion equation, the linear elasticity equations,
-or the Helmhotz equation for wave propagation.
-The library can be used through various software for scientific computing:
-PETSc, SLEPc, FreeFEM, Feel++, or HTOOL.
-
-\subsection{Purpose}
-\label{sec:HPDDM:purpose}
-
-HPDDM aims at providing the scientific community a set of robust and efficient domain decomposition methods
-to solve linear systems in parallel.
-
-\subsection{Programming and Computational Environment}
-\label{sec::HPDDM:environment_capabilities}
-
-
-The following table summarizes these aspects for HPDDM, providing a  view of its programming and computational capabilities.
-
-\begin{table}[h!]
-    \centering
+    
+%%\begin{table}[!ht]
+%%    \centering
     {
     \setlength{\parindent}{0pt}
     \def\arraystretch{1.25}
     \arrayrulecolor{numpexgray}
     {\fontsize{9}{11}\selectfont
-    \begin{tabular}{lp{.3\textwidth}p{.5\textwidth}}
-        \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Category}  & {\rule{0pt}{2.5ex}\color{white}\bf Details} & {\rule{0pt}{2.5ex}\color{white}\bf Description}\\
-        \rowcolor{white}Languages  & \begin{tabular}{l}
-C\\
-C++\\
-Fortran\\
-Python\\
-\end{tabular} & The software is header-only in C++ but there are bindings to other languages and libraries.\\
-        \rowcolor{numpexlightergray}Parallelism  & \begin{tabular}{l}
-GPU\\
-MPI\\
-Multithread\\
-\end{tabular} & Subdomains are typically bound to an MPI process, which can then exploit OpenMP or CUDA.\\
-        \rowcolor{white}Data Formats  & \begin{tabular}{l}
-in-house format\\
-\end{tabular} & The software mostly relies on the data formats of calling libraries, e.g., PETSc.\\
-        \rowcolor{numpexlightergray}Resilience  & \begin{tabular}{l}
-None\\
-\end{tabular} & Currently no recovery mechanisms.\\
-        \rowcolor{white}DevOps & \begin{tabular}{l}
-Continuous Integration\\
-\end{tabular} & GitHub Actions is used for running a test suite with MPI and CUDA examples. Codecov is used for the code coverage.  \\
-        \rowcolor{numpexlightergray}Packaging  & \begin{tabular}{l}
-None\\
-\end{tabular} & Available in Spack, MacPorts, PETSc, SLEPc, and FreeFEM.\\
-        \rowcolor{white}Testing  & \begin{tabular}{l}
-Unit\\
-Verification\\
-\end{tabular} & Regression tests with respect to number of iterations, time to solution, and other preconditioner metrics.\\
-        \rowcolor{numpexlightergray}Containerization  & \begin{tabular}{l}
-None\\
-\end{tabular} & Not applicable.\\
-        \rowcolor{white}Interfaces  & \begin{tabular}{l}
-Feel++\\
-Freefem++\\
-MUMPS\\
-PETSc\\
-PaStiX\\
-HTOOL\\
-\\
-\end{tabular} & The library can use PaStiX and MUMPS. The library is used by Feel++, Freefem++, PETSc, and HTOOL, all through the C++ API.\\
-        \bottomrule
+    \begin{tabular}{!{\color{numpexgray}\vrule}p{0.20\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.40\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.35\textwidth}
+                    !{\color{numpexgray}\vrule}}
+    \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Training Category} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf Description} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf URL/Links} \\
+\rowcolor{white}Documentation & User manuals, reference guides, and detailed usage instructions. & provide url/links to training \\
+\rowcolor{numpexlightergray}Tutorials & Hands-on or step-by-step guides for newcomers and practitioners. & provide url/links to training \\
+\rowcolor{white}SIAM & Trainings or sessions associated with SIAM conferences or workshops. & provide url/links to training \\
+\rowcolor{numpexlightergray}CEA/INRIA/EDF & Joint trainings by CEA, INRIA, EDF, and possibly academic partners. & provide url/links to training \\
+\bottomrule
     \end{tabular}
     }}
-    \caption{HPDDM programming and computational environment}
+%    \caption{HPDDM Training}
+%\end{table}
+
+    }}
+    \caption{HPDDM Information}
 \end{table}
 
 
-
-\subsection{Mathematics}
-\label{sec:HPDDM:mathematics}
-\fullcite{dolean_introduction_2015} provides the mathematical foundation of the library, most importantly when it comes to the definition of parameter-robust preconditioner for symmetric positive definite systems.
-
-\subsection{Relevant Publications}
-\label{sec:HPDDM:publications}
-
-Here is a list of relevant publications related to the software:
-\begin{itemize}
-\item \fullcite{jolivet_scalable_2013} presents a two-level domain decomposition preconditioner tested to solve elliptic problems in parallel with up to 22 billion unknowns in 2D and 2 billion unknowns in 3D.
-\item \fullcite{jolivet_block_2016} presents block iterative methods and recycling strategies to solve linear systems with multiple right-hand sides and millions of unknwons while preserving a good scalability.
-\item \fullcite{jolivet_ksphpddm_2021} presents KSPHPDDM (Krylov methods) and PCHPDDM (preconditioners) available in PETSc, when configured with HPDDM support.
-\end{itemize}
-  
-
-\subsection{Acknowledgements}
-\label{sec::HPDDM:acknowledgements}
-
-The software has been developed with the support of the following funding agencies and institutions: 
+\paragraph{Additional Details:}
+\begin{description}
+\item[\textbf{Documentation}] % start of item
+\emph{Short Description: User manuals, reference guides, and detailed usage instructions.}
 
 \begin{itemize}
-\item Sorbonne Université
-\item Institut de Recherche en Informatique de Toulouse
-\item INRIA
-\item ANR
-\item Eidgenössische Technische Hochschule Zürich
-\item Université Grenoble Alpes
+  \item Which topics are covered (installation, usage, performance tuning, advanced features)?
+  \item What will be the final format (PDF, Wiki, Jupyter notebooks, web pages)?
+  \item What is the expected timeline or milestone for completing the documentation?
 \end{itemize}
+
+\item[\textbf{Tutorials}] % start of item
+\emph{Short Description: Hands-on or step-by-step guides for newcomers and practitioners.}
+
+\begin{itemize}
+  \item Which modules or steps are included (environment setup, HPC job submission, scaling tests, performance benchmarks)?
+  \item Who is the main target audience (undergraduates, HPC engineers, domain scientists)?
+  \item Is there a link to any draft or existing tutorial materials?
+\end{itemize}
+
+\item[\textbf{SIAM}] % start of item
+\emph{Short Description: Trainings or sessions associated with SIAM conferences or workshops.}
+
+\begin{itemize}
+  \item Does the training coincide with SIAM conferences (e.g., CSE, PP) or related workshops?
+  \item Is there a minisymposium or tutorial under a SIAM umbrella?
+  \item Which HPC or exascale topics are highlighted in this context?
+\end{itemize}
+
+\item[\textbf{CEA/INRIA/EDF}] % start of item
+\emph{Short Description: Joint trainings by CEA, INRIA, EDF, and possibly academic partners.}
+
+\begin{itemize}
+  \item Which of these organizations (CEA, INRIA, EDF) are co-organizing the training?
+  \item Is the training aimed at novices or advanced HPC developers, or a mix?
+  \item What academic or industrial collaborations enhance the training content?
+\end{itemize}
+
+\end{description}

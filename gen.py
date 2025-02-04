@@ -4,6 +4,8 @@ import os
 import pandas as pd
 from tabulate import tabulate
 import numpy as np
+
+
 # Specify the path to your Excel file
 file_path = 'exama-software.xlsx'
 # Define the sheet name or index
@@ -12,6 +14,96 @@ sheet_name = 'Software'
 # Load the specified range of the Excel sheet into a DataFrame
 # Assuming the data starts from the first row and first column, and ends at column 'X' (24th) and row 46
 df = pd.read_excel(file_path, sheet_name=sheet_name,engine='openpyxl')
+
+training_questions = {
+    "Documentation": [
+        "Which topics are covered (installation, usage, performance tuning, advanced features)?",
+        "What will be the final format (PDF, Wiki, Jupyter notebooks, web pages)?",
+        "What is the expected timeline or milestone for completing the documentation?"
+    ],
+    "Tutorials": [
+        "Which modules or steps are included (environment setup, HPC job submission, scaling tests, performance benchmarks)?",
+        "Who is the main target audience (undergraduates, HPC engineers, domain scientists)?",
+        "Is there a link to any draft or existing tutorial materials?"
+    ],
+    "Initial Training": [
+        "For which academic level(s) (Bachelor, Master 1, Master 2, Doctoral) is this training designed?",
+        "Who is the intended audience, and what prerequisites (skills, background) are required?",
+        "How often will this training occur (once per semester, annually, on-demand)?"
+    ],
+    "Initial Training::Bachelor": [
+        "Which bachelor-level courses or curricula does this training align with?",
+        "What HPC or mathematical fundamentals will be introduced at this level?",
+        "What is the approximate class size or typical audience profile?"
+    ],
+    "Initial Training::Master 1": [
+        "Which HPC or mathematical modules are covered in Master 1?",
+        "Will there be practical sessions or projects for hands-on experience?",
+        "What background or prerequisites are expected for participants?"
+    ],
+    "Initial Training::Master 2": [
+        "What advanced HPC topics or specialized algorithms are taught in Master 2?",
+        "Are there collaborative projects (internships, research labs) integrated?",
+        "Which industry or research partners are involved in these trainings?"
+    ],
+    "Initial Training::Doctoral School": [
+        "What is the scope of the doctoral-level sessions (theoretical, applied, HPC infrastructure)?",
+        "How frequently are these sessions offered (annually, every semester)?",
+        "Is there a focus on hands-on HPC cluster training or collaborations with HPC research labs?"
+    ],
+    "Continuing Training": [
+        "Is this training aimed at professionals or continuing education for experienced practitioners?",
+        "Are any certifications or formal recognitions awarded upon completion?",
+        "Where can participants find registration details or materials?"
+    ],
+    "Genci": [
+        "Is the training coordinated with GENCI calls or HPC centers in France?",
+        "Does it address large-scale HPC usage (CPU/GPU hours, optimizing code for supercomputers)?",
+        "Which national HPC center resources or best practices are referenced?"
+    ],
+    "EuroHPC/Prace": [
+        "Is the training part of EuroHPC or PRACE events or programs?",
+        "Does it involve pan-European workshops, hackathons, or summer schools?",
+        "Are best practices for large-scale HPC allocations and usage taught?"
+    ],
+    "SIAM": [
+        "Does the training coincide with SIAM conferences (e.g., CSE, PP) or related workshops?",
+        "Is there a minisymposium or tutorial under a SIAM umbrella?",
+        "Which HPC or exascale topics are highlighted in this context?"
+    ],
+    "Supercomputing/BoF": [
+        "At which Supercomputing conference edition (SC23, SC24, etc.) will this occur?",
+        "Will there be a Birds-of-a-Feather (BoF) session, hands-on tutorials, or workshops?",
+        "Are there any code sprints or hands-on HPC activities planned?"
+    ],
+    "CoE": [
+        "Which Center of Excellence (EXCELLERAT, RAISE, COEC, etc.) is participating?",
+        "Is the focus on domain-specific HPC or cross-cutting methods for exascale readiness?",
+        "How does the training incorporate exascale hardware or code modernization approaches?"
+    ],
+    "CEA/INRIA/EDF": [
+        "Which of these organizations (CEA, INRIA, EDF) are co-organizing the training?",
+        "Is the training aimed at novices or advanced HPC developers, or a mix?",
+        "What academic or industrial collaborations enhance the training content?"
+    ]
+}
+
+training_descriptions = {
+    "Documentation": "User manuals, reference guides, and detailed usage instructions.",
+    "Tutorials": "Hands-on or step-by-step guides for newcomers and practitioners.",
+    "Initial Training": "Introductory courses for academic levels from Bachelor to Doctoral.",
+    "Initial Training::Bachelor": "Undergraduate-level HPC exposure or introductory courses.",
+    "Initial Training::Master 1": "Intermediate HPC modules suitable for first-year Master students.",
+    "Initial Training::Master 2": "Advanced HPC topics or specialized algorithms for Master 2.",
+    "Initial Training::Doctoral School": "Doctoral-level seminars or workshops involving HPC research.",
+    "Continuing Training": "Professional or ongoing education for updating HPC skills.",
+    "Genci": "Trainings organized with support or resources from GENCI.",
+    "EuroHPC/Prace": "Events sponsored or recognized by EuroHPC or PRACE.",
+    "SIAM": "Trainings or sessions associated with SIAM conferences or workshops.",
+    "Supercomputing/BoF": "Trainings or Birds-of-a-Feather events at Supercomputing conferences.",
+    "CoE": "Sessions run by or in collaboration with HPC Centers of Excellence.",
+    "CEA/INRIA/EDF": "Joint trainings by CEA, INRIA, EDF, and possibly academic partners."
+}
 
 benchmarked_software = df[df['Benchmarked'].str.contains('CPU|GPU|HYBRID', na=False)]
 
@@ -153,6 +245,105 @@ def generate_latex_table_simple(input_string, strip=True):
     for index, item in enumerate(items):
         latex_code += f'{item}\\\\\n'
     latex_code += '\\end{tabular}'
+
+    return latex_code
+
+def generate_latex_training_table(software_name, training_string):
+    """
+    Generates a two-column LaTeX table for training items.
+    Each row: [Training Category | Short Description].
+    """
+    # If your training column is empty or NaN:
+    if pd.isnull(training_string) or training_string.strip() == "":
+        return "No training information provided."
+
+
+
+    # Split the software’s training string by commas
+    items = [item.strip() for item in training_string.split(",") if item.strip()]
+
+    # Build the LaTeX table
+    latex_table = r"""
+%%\begin{table}[!ht]
+%%    \centering
+    {
+    \setlength{\parindent}{0pt}
+    \def\arraystretch{1.25}
+    \arrayrulecolor{numpexgray}
+    {\fontsize{9}{11}\selectfont
+    \begin{tabular}{!{\color{numpexgray}\vrule}p{0.20\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.40\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.35\textwidth}
+                    !{\color{numpexgray}\vrule}}
+    \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Training Category} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf Description} 
+         & {\rule{0pt}{2.5ex}\color{white}\bf URL/Links} \\
+"""
+
+    # Alternate row colors like in your other tables
+    row_colors = ["white", "numpexlightergray"]
+    color_index = 0
+
+    for idx, item in enumerate(items):
+        # If you have a short description in the dict, use it; otherwise fallback
+        desc = training_descriptions.get(item, "No description available.")
+        #  the devs will later fill out the column with the actual links
+        link_col = "provide url/links to training"
+
+        # Output row
+        latex_table += (
+            f"\\rowcolor{{{row_colors[color_index]}}}"
+            f"{item} & {desc} & {link_col} \\\\\n"
+        )
+        # Flip color index
+        color_index = 1 - color_index
+
+    latex_table += r"""\bottomrule
+    \end{tabular}
+    }}
+%    \caption{""" + f"{software_name} Training" + r"""}
+%\end{table}
+"""
+
+    return latex_table
+
+def generate_latex_training_questions(software_name, training_string, training_descriptions, training_questions):
+    """
+    Creates a LaTeX description list with bullet points for each training category,
+    using the data from training_questions.
+    """
+    # If 'Training' is empty or missing:
+    if pd.isnull(training_string) or not training_string.strip():
+        return "% No training categories specified.\n"
+
+    items = [item.strip() for item in training_string.split(",") if item.strip()]
+
+    latex_code = r"\begin{description}" + "\n"
+
+    for item in items:
+        # 1) The base 'category' might be 'Initial Training' vs 'Initial Training::Bachelor'
+        base_category = item
+        if "::" in item:
+            base_category = item.split("::")[0].strip()
+
+        # 2) description from your existing dictionary
+        desc = training_descriptions.get(item, training_descriptions.get(base_category, "No description available."))
+
+        # 3) retrieve the relevant questions
+        q_list = training_questions.get(item, training_questions.get(base_category, []))
+
+        latex_code += f"\\item[\\textbf{{{item}}}] % start of item\n"
+        latex_code += f"\\emph{{Short Description: {desc}}}\n\n"
+
+        if q_list:
+            latex_code += "\\begin{itemize}\n"
+            for q in q_list:
+                latex_code += f"  \\item {q}\n"
+            latex_code += "\\end{itemize}\n\n"
+        else:
+            latex_code += "% No questions defined for this category.\n\n"
+
+    latex_code += r"\end{description}" + "\n"
 
     return latex_code
 
@@ -610,9 +801,22 @@ software_list["software"] = ""
 for index,software in benchmarked_software.iterrows():
     software_json = json.loads(software.to_json())
     software_json['name'] = software['Software']
-    for column_name in ['Emails','Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience','Interfaces']:
+    for column_name in ['Emails','Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience','Interfaces', 'Training']:
         software_json[column_name] = generate_latex_table_simple(
             input_string=software[column_name])
+    # Generate the training table if "Training" column exists
+    training_table_latex = generate_latex_training_table(
+            software_name=software["Software"],
+            training_string=software["Training"] if "Training" in software else ""
+    )
+    software_json["TrainingTable"] = training_table_latex
+    training_questions_latex = generate_latex_training_questions(
+        software_name=software["Software"],
+        training_string=software["Training"] if "Training" in software else "",
+        training_descriptions=training_descriptions,
+        training_questions=training_questions
+    )
+    software_json["TrainingQuestions"] = training_questions_latex
     desc = template_desc.render(software= software_json)
     name = software['Software']
     prefix = software_prefix(software)
@@ -633,7 +837,7 @@ for index,software in benchmarked_software.iterrows():
                 desc="Features", input_string=software[category])
             software_json['BottlenecksT'] = generate_latex_table(
                 desc="Bottlenecks", input_string=software['Bottlenecks'])
-            for column_name in ['Emails', 'Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience', 'Interfaces']:
+            for column_name in ['Emails', 'Consortium', 'Partner', 'License', 'Bottlenecks', 'Languages', 'Benchmarked', 'Parallelism', 'Data', 'Resilience', 'DevOps', 'CI', 'Packaging', 'Containers', 'Tests', 'Resilience', 'Interfaces', 'Training']:
                 software_json[column_name] = generate_latex_table_simple(
                     input_string=software[column_name])
             software_json['Emails'] = generate_latex_table_simple(
@@ -657,21 +861,21 @@ with open('chapters/software.tex', 'w') as f:
 # sort latex_content_per_category with respect to category in lexical order
 latex_content_per_category = dict(sorted(latex_content_per_category.items()))
 # Now, generate a .tex file for each category containing all relevant software entries
-with open('chapters/00-index.tex', 'a') as main_index:
-    for category, software_list in latex_content_per_category.items():
-        # create the directory for the category
-        os.makedirs(f'chapters/{category}', exist_ok=True)
-        main_index.write('\chapter{'+f'{WPs[category]}'+'}\n')
-        main_index.write('\clearpage\n\subimport{'+f'./{category}'+'}{00-index}\n\n')
-        with open(f'chapters/{category}/00-index.tex', 'w') as index:
-            for i,software in benchmarked_software.iterrows():
-                #software_json = software.to_json()
-                #name = software['Software']
-
-                prefix = software_prefix(software)
-                #content_list = software['wp']
-                # include the software in the category file
-                if is_benchmarked_in(category,software):
-                    index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
-                #index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
+# with open('chapters/00-index.tex', 'a') as main_index:
+#     for category, software_list in latex_content_per_category.items():
+#         # create the directory for the category
+#         os.makedirs(f'chapters/{category}', exist_ok=True)
+#         main_index.write('\chapter{'+f'{WPs[category]}'+'}\n')
+#         main_index.write('\clearpage\n\subimport{'+f'./{category}'+'}{00-index}\n\n')
+#         with open(f'chapters/{category}/00-index.tex', 'w') as index:
+#             for i,software in benchmarked_software.iterrows():
+#                 #software_json = software.to_json()
+#                 #name = software['Software']
+# 
+#                 prefix = software_prefix(software)
+#                 #content_list = software['wp']
+#                 # include the software in the category file
+#                 if is_benchmarked_in(category,software):
+#                     index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
+#                 #index.write('\input{software/'+f'{prefix}/{category}/{category}.tex'+'}\n')
 
