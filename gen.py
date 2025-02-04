@@ -4,6 +4,8 @@ import os
 import pandas as pd
 from tabulate import tabulate
 import numpy as np
+
+
 # Specify the path to your Excel file
 file_path = 'exama-software.xlsx'
 # Define the sheet name or index
@@ -12,6 +14,96 @@ sheet_name = 'Software'
 # Load the specified range of the Excel sheet into a DataFrame
 # Assuming the data starts from the first row and first column, and ends at column 'X' (24th) and row 46
 df = pd.read_excel(file_path, sheet_name=sheet_name,engine='openpyxl')
+
+training_questions = {
+    "Documentation": [
+        "Which topics are covered (installation, usage, performance tuning, advanced features)?",
+        "What will be the final format (PDF, Wiki, Jupyter notebooks, web pages)?",
+        "What is the expected timeline or milestone for completing the documentation?"
+    ],
+    "Tutorials": [
+        "Which modules or steps are included (environment setup, HPC job submission, scaling tests, performance benchmarks)?",
+        "Who is the main target audience (undergraduates, HPC engineers, domain scientists)?",
+        "Is there a link to any draft or existing tutorial materials?"
+    ],
+    "Initial Training": [
+        "For which academic level(s) (Bachelor, Master 1, Master 2, Doctoral) is this training designed?",
+        "Who is the intended audience, and what prerequisites (skills, background) are required?",
+        "How often will this training occur (once per semester, annually, on-demand)?"
+    ],
+    "Initial Training::Bachelor": [
+        "Which bachelor-level courses or curricula does this training align with?",
+        "What HPC or mathematical fundamentals will be introduced at this level?",
+        "What is the approximate class size or typical audience profile?"
+    ],
+    "Initial Training::Master 1": [
+        "Which HPC or mathematical modules are covered in Master 1?",
+        "Will there be practical sessions or projects for hands-on experience?",
+        "What background or prerequisites are expected for participants?"
+    ],
+    "Initial Training::Master 2": [
+        "What advanced HPC topics or specialized algorithms are taught in Master 2?",
+        "Are there collaborative projects (internships, research labs) integrated?",
+        "Which industry or research partners are involved in these trainings?"
+    ],
+    "Initial Training::Doctoral School": [
+        "What is the scope of the doctoral-level sessions (theoretical, applied, HPC infrastructure)?",
+        "How frequently are these sessions offered (annually, every semester)?",
+        "Is there a focus on hands-on HPC cluster training or collaborations with HPC research labs?"
+    ],
+    "Continuing Training": [
+        "Is this training aimed at professionals or continuing education for experienced practitioners?",
+        "Are any certifications or formal recognitions awarded upon completion?",
+        "Where can participants find registration details or materials?"
+    ],
+    "Genci": [
+        "Is the training coordinated with GENCI calls or HPC centers in France?",
+        "Does it address large-scale HPC usage (CPU/GPU hours, optimizing code for supercomputers)?",
+        "Which national HPC center resources or best practices are referenced?"
+    ],
+    "EuroHPC/Prace": [
+        "Is the training part of EuroHPC or PRACE events or programs?",
+        "Does it involve pan-European workshops, hackathons, or summer schools?",
+        "Are best practices for large-scale HPC allocations and usage taught?"
+    ],
+    "SIAM": [
+        "Does the training coincide with SIAM conferences (e.g., CSE, PP) or related workshops?",
+        "Is there a minisymposium or tutorial under a SIAM umbrella?",
+        "Which HPC or exascale topics are highlighted in this context?"
+    ],
+    "Supercomputing/BoF": [
+        "At which Supercomputing conference edition (SC23, SC24, etc.) will this occur?",
+        "Will there be a Birds-of-a-Feather (BoF) session, hands-on tutorials, or workshops?",
+        "Are there any code sprints or hands-on HPC activities planned?"
+    ],
+    "CoE": [
+        "Which Center of Excellence (EXCELLERAT, RAISE, COEC, etc.) is participating?",
+        "Is the focus on domain-specific HPC or cross-cutting methods for exascale readiness?",
+        "How does the training incorporate exascale hardware or code modernization approaches?"
+    ],
+    "CEA/INRIA/EDF": [
+        "Which of these organizations (CEA, INRIA, EDF) are co-organizing the training?",
+        "Is the training aimed at novices or advanced HPC developers, or a mix?",
+        "What academic or industrial collaborations enhance the training content?"
+    ]
+}
+
+training_descriptions = {
+    "Documentation": "User manuals, reference guides, and detailed usage instructions.",
+    "Tutorials": "Hands-on or step-by-step guides for newcomers and practitioners.",
+    "Initial Training": "Introductory courses for academic levels from Bachelor to Doctoral.",
+    "Initial Training::Bachelor": "Undergraduate-level HPC exposure or introductory courses.",
+    "Initial Training::Master 1": "Intermediate HPC modules suitable for first-year Master students.",
+    "Initial Training::Master 2": "Advanced HPC topics or specialized algorithms for Master 2.",
+    "Initial Training::Doctoral School": "Doctoral-level seminars or workshops involving HPC research.",
+    "Continuing Training": "Professional or ongoing education for updating HPC skills.",
+    "Genci": "Trainings organized with support or resources from GENCI.",
+    "EuroHPC/Prace": "Events sponsored or recognized by EuroHPC or PRACE.",
+    "SIAM": "Trainings or sessions associated with SIAM conferences or workshops.",
+    "Supercomputing/BoF": "Trainings or Birds-of-a-Feather events at Supercomputing conferences.",
+    "CoE": "Sessions run by or in collaboration with HPC Centers of Excellence.",
+    "CEA/INRIA/EDF": "Joint trainings by CEA, INRIA, EDF, and possibly academic partners."
+}
 
 benchmarked_software = df[df['Benchmarked'].str.contains('CPU|GPU|HYBRID', na=False)]
 
@@ -165,31 +257,15 @@ def generate_latex_training_table(software_name, training_string):
     if pd.isnull(training_string) or training_string.strip() == "":
         return "No training information provided."
 
-    # Define short descriptions for each training type
-    training_descriptions = {
-        "Documentation": "User manuals, reference guides, etc.",
-        "Tutorials": "Hands-on tutorials or step-by-step guides.",
-        "Initial Training": "Undergraduate or entry-level academic courses.",
-        "Initial Training::Bachelor": "Bachelor-level academic courses.",
-        "Initial Training::Master 1": "Master 1-level academic courses.",
-        "Initial Training::Master 2": "Master 2-level academic courses.",
-        "Initial Training::Doctoral School": "Doctoral-level sessions or schools.",
-        "Continuing Training": "Professional or continuing education sessions.",
-        "Genci": "Training sessions organized by GENCI.",
-        "EuroHPC/Prace": "EuroHPC or PRACE-sponsored events and trainings.",
-        "SIAM": "Conferences or specialized training under SIAM.",
-        "Supercomputing/BoF": "Birds-of-a-Feather sessions or workshops at Supercomputing.",
-        "CoE": "Center of Excellence training sessions.",
-        "CEA/INRIA/EDF": "Trainings jointly organized by CEA, INRIA, or EDF."
-    }
+
 
     # Split the software’s training string by commas
     items = [item.strip() for item in training_string.split(",") if item.strip()]
 
     # Build the LaTeX table
     latex_table = r"""
-\begin{table}[!ht]
-    \centering
+%%\begin{table}[!ht]
+%%    \centering
     {
     \setlength{\parindent}{0pt}
     \def\arraystretch{1.25}
@@ -225,11 +301,52 @@ def generate_latex_training_table(software_name, training_string):
     latex_table += r"""\bottomrule
     \end{tabular}
     }}
-    \caption{""" + f"{software_name} Training" + r"""}
-\end{table}
+%    \caption{""" + f"{software_name} Training" + r"""}
+%\end{table}
 """
 
     return latex_table
+
+def generate_latex_training_questions(software_name, training_string, training_descriptions, training_questions):
+    """
+    Creates a LaTeX description list with bullet points for each training category,
+    using the data from training_questions.
+    """
+    # If 'Training' is empty or missing:
+    if pd.isnull(training_string) or not training_string.strip():
+        return "% No training categories specified.\n"
+
+    items = [item.strip() for item in training_string.split(",") if item.strip()]
+
+    latex_code = r"\begin{description}" + "\n"
+
+    for item in items:
+        # 1) The base 'category' might be 'Initial Training' vs 'Initial Training::Bachelor'
+        base_category = item
+        if "::" in item:
+            base_category = item.split("::")[0].strip()
+
+        # 2) description from your existing dictionary
+        desc = training_descriptions.get(item, training_descriptions.get(base_category, "No description available."))
+
+        # 3) retrieve the relevant questions
+        q_list = training_questions.get(item, training_questions.get(base_category, []))
+
+        latex_code += f"\\item[\\textbf{{{item}}}] % start of item\n"
+        latex_code += f"\\emph{{Short Description: {desc}}}\n\n"
+
+        if q_list:
+            latex_code += "\\begin{itemize}\n"
+            for q in q_list:
+                latex_code += f"  \\item {q}\n"
+            latex_code += "\\end{itemize}\n\n"
+        else:
+            latex_code += "% No questions defined for this category.\n\n"
+
+    latex_code += r"\end{description}" + "\n"
+
+    return latex_code
+
 # Apply functions to create new columns based on 'DevOps'
 benchmarked_software['CI'] = benchmarked_software.apply(lambda row: check_ci(row), axis=1)
 benchmarked_software['Packaging'] = benchmarked_software.apply(lambda row: check_packaging(row), axis=1)
@@ -693,6 +810,13 @@ for index,software in benchmarked_software.iterrows():
             training_string=software["Training"] if "Training" in software else ""
     )
     software_json["TrainingTable"] = training_table_latex
+    training_questions_latex = generate_latex_training_questions(
+        software_name=software["Software"],
+        training_string=software["Training"] if "Training" in software else "",
+        training_descriptions=training_descriptions,
+        training_questions=training_questions
+    )
+    software_json["TrainingQuestions"] = training_questions_latex
     desc = template_desc.render(software= software_json)
     name = software['Software']
     prefix = software_prefix(software)
