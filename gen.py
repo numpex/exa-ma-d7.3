@@ -827,7 +827,7 @@ for index,software in benchmarked_software.iterrows():
     with open(f'software/{prefix}/{prefix}.tex', 'w') as f:
         f.write(desc)
     # Loop through all categories for the current software
-    for wpindex in range(1,7):
+    for wpindex in range(1,1):
         category = f'WP{wpindex}'
         print(f"category: {category}")
         if is_benchmarked_in(category,software):
@@ -855,11 +855,11 @@ for index,software in benchmarked_software.iterrows():
                 f.write(wp)
             print(f"- Generated LaTeX file for {name} in category {category}: software/{prefix}/{category}/{category}.tex")
 
-with open('chapters/software.tex', 'w') as f:
-    f.write(template_soft.render(software=software_list))
+#with open('chapters/software.tex', 'w') as f:
+#    f.write(template_soft.render(software=software_list))
 
 # sort latex_content_per_category with respect to category in lexical order
-latex_content_per_category = dict(sorted(latex_content_per_category.items()))
+#latex_content_per_category = dict(sorted(latex_content_per_category.items()))
 # Now, generate a .tex file for each category containing all relevant software entries
 # with open('chapters/00-index.tex', 'a') as main_index:
 #     for category, software_list in latex_content_per_category.items():
