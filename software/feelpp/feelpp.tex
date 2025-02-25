@@ -56,11 +56,11 @@ Tutorials\\
     \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Training Category} 
          & {\rule{0pt}{2.5ex}\color{white}\bf Description} 
          & {\rule{0pt}{2.5ex}\color{white}\bf URL/Links} \\
-\rowcolor{white}Documentation & User manuals, reference guides, and detailed usage instructions. & provide url/links to training \\
-\rowcolor{numpexlightergray}Tutorials & Hands-on or step-by-step guides for newcomers and practitioners. & provide url/links to training \\
-\rowcolor{white}Initial Training & Introductory courses for academic levels from Bachelor to Doctoral. & provide url/links to training \\
-\rowcolor{numpexlightergray}Initial Training::Master 1 & Intermediate HPC modules suitable for first-year Master students. & provide url/links to training \\
-\rowcolor{white}Initial Training::Master 2 & Advanced HPC topics or specialized algorithms for Master 2. & provide url/links to training \\
+\rowcolor{white}Documentation & User manuals, reference guides, and detailed usage instructions. & \url{https://docs.feelpp.org} \\
+\rowcolor{numpexlightergray}Tutorials & Hands-on or step-by-step guides for newcomers and practitioners. & \url{https://docs.feelpp.org} \\
+\rowcolor{white}Initial Training & Introductory courses for academic levels from Bachelor to Doctoral. & \url{https://docs.feelpp.org} \\
+\rowcolor{numpexlightergray}Initial Training::Master 1 & Intermediate HPC modules suitable for first-year Master students. & \url{https://docs.feelpp.org}\\
+\rowcolor{white}Initial Training::Master 2 & Advanced HPC topics or specialized algorithms for Master 2. & \url{https://docs.feelpp.org} \\
 \bottomrule
     \end{tabular}
     }}
@@ -78,45 +78,29 @@ Tutorials\\
 \emph{Short Description: User manuals, reference guides, and detailed usage instructions.}
 
 \begin{itemize}
-  \item Which topics are covered (installation, usage, performance tuning, advanced features)?
-  \item What will be the final format (PDF, Wiki, Jupyter notebooks, web pages)?
-  \item What is the expected timeline or milestone for completing the documentation?
+  \item Topics covered are: installation, usage, advanced features, benchmarking, testcases, and API
+  \item Format : webpages and notebooks. Jupyter notebooks are provided for some pages
+  \item The document is an on-going open-source effort using Asciidoc and Antora and where contributions are welcome
 \end{itemize}
 
 \item[\textbf{Tutorials}] % start of item
 \emph{Short Description: Hands-on or step-by-step guides for newcomers and practitioners.}
 
 \begin{itemize}
-  \item Which modules or steps are included (environment setup, HPC job submission, scaling tests, performance benchmarks)?
-  \item Who is the main target audience (undergraduates, HPC engineers, domain scientists)?
-  \item Is there a link to any draft or existing tutorial materials?
+  \item Steps included are: environment setup, using testcases, using applications and progamming interface
+  \item The main target audience : the user of Feel++
+  \item The format : webpages and notebooks
+  \item The hands-on/step by step guides are an on-going open-source effort using Asciidoc and Antora and where contributions are welcome
+\end{itemize}
 \end{itemize}
 
-\item[\textbf{Initial Training}] % start of item
+\item[\textbf{Initial Training::Master 1 and 2}] % start of item
 \emph{Short Description: Introductory courses for academic levels from Bachelor to Doctoral.}
 
 \begin{itemize}
-  \item For which academic level(s) (Bachelor, Master 1, Master 2, Doctoral) is this training designed?
-  \item Who is the intended audience, and what prerequisites (skills, background) are required?
-  \item How often will this training occur (once per semester, annually, on-demand)?
-\end{itemize}
-
-\item[\textbf{Initial Training::Master 1}] % start of item
-\emph{Short Description: Intermediate HPC modules suitable for first-year Master students.}
-
-\begin{itemize}
-  \item Which HPC or mathematical modules are covered in Master 1?
-  \item Will there be practical sessions or projects for hands-on experience?
-  \item What background or prerequisites are expected for participants?
-\end{itemize}
-
-\item[\textbf{Initial Training::Master 2}] % start of item
-\emph{Short Description: Advanced HPC topics or specialized algorithms for Master 2.}
-
-\begin{itemize}
-  \item What advanced HPC topics or specialized algorithms are taught in Master 2?
-  \item Are there collaborative projects (internships, research labs) integrated?
-  \item Which industry or research partners are involved in these trainings?
+  \item Academic levels: Master 1, Master 2, Doctoral
+  \item The audience is for applied mathematics or application oriented students
+  \item The frequency : 1 to 2 per semester
 \end{itemize}
 
 \end{description}
@@ -127,9 +111,9 @@ Tutorials\\
 
 Below are some guiding questions to help outline the next steps for training with Feel++:
 \begin{itemize}
-    \item What new training content or updates are planned for Feel++ in the upcoming milestones?
-    \item How will the training materials be updated to incorporate the latest exascale techniques and user feedback?
-    \item Which new delivery formats (e.g., webinars, interactive sessions, hands-on workshops) should be introduced?
-    \item What additional documentation or support tools are needed to help users get started or deepen their expertise?
-    \item How can we better integrate training activities with academic and industrial outreach efforts?
+    \item New training content include: videos, automated tutorial generation, documentation updates and creation for upcoming releases
+    \item \textit{How will the training materials be updated to incorporate the latest exascale techniques and user feedback?} We plan on using the feelpp.benchmarking framework to document systematically the performance of Feel++ and its components, this will help update the performannce tuning documentation.
+    \item \textit{Which new delivery formats (e.g., webinars, interactive sessions, hands-on workshops) should be introduced?} webinars, interactive sessions, workshops
+    \item \textit{What additional documentation or support tools are needed to help users get started or deepen their expertise?} currently we believe we cover a lot of different aspects in our documentation
+    \item \textit{How can we better integrate training activities with academic and industrial outreach efforts?}
 \end{itemize}
