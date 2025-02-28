@@ -56,11 +56,11 @@ Tutorials\\
     \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Training Category} 
          & {\rule{0pt}{2.5ex}\color{white}\bf Description} 
          & {\rule{0pt}{2.5ex}\color{white}\bf URL/Links} \\
-\rowcolor{white}Documentation & User manuals, reference guides, and detailed usage instructions. & provide url/links to training \\
-\rowcolor{numpexlightergray}Tutorials & Hands-on or step-by-step guides for newcomers and practitioners. & provide url/links to training \\
-\rowcolor{white}Initial Training & Introductory courses for academic levels from Bachelor to Doctoral. & provide url/links to training \\
-\rowcolor{numpexlightergray}Initial Training::Master 1 & Intermediate HPC modules suitable for first-year Master students. & provide url/links to training \\
-\rowcolor{white}Initial Training::Master 2 & Advanced HPC topics or specialized algorithms for Master 2. & provide url/links to training \\
+\rowcolor{white}Documentation & User manuals, reference guides, and detailed usage instructions. & \url{https://docs.feelpp.org} \\
+\rowcolor{numpexlightergray}Tutorials & Hands-on or step-by-step guides for newcomers and practitioners. & \url{https://docs.feelpp.org} \\
+\rowcolor{white}Initial Training & Introductory courses for academic levels from Bachelor to Doctoral. & \url{https://docs.feelpp.org} \\
+\rowcolor{numpexlightergray}Initial Training::Master 1 & Intermediate HPC modules suitable for first-year Master students. & \url{https://docs.feelpp.org}\\
+\rowcolor{white}Initial Training::Master 2 & Advanced HPC topics or specialized algorithms for Master 2. & \url{https://docs.feelpp.org} \\
 \bottomrule
     \end{tabular}
     }}
@@ -73,63 +73,97 @@ Tutorials\\
 
 
 \paragraph{Additional Details:}
+
 \begin{description}
-\item[\textbf{Documentation}] % start of item
-\emph{Short Description: User manuals, reference guides, and detailed usage instructions.}
+
+\item[\textbf{Documentation}]
+\emph{Short Description: Comprehensive user manuals, reference guides, and detailed usage instructions.}
 
 \begin{itemize}
-  \item Which topics are covered (installation, usage, performance tuning, advanced features)?
-  \item What will be the final format (PDF, Wiki, Jupyter notebooks, web pages)?
-  \item What is the expected timeline or milestone for completing the documentation?
+\item \textbf{Content:} Covers installation, usage, advanced features, benchmarking, test cases, and API
+\item \textbf{Format:} Available as webpages and notebooks, with Jupyter notebooks provided for some sections
+\item \textbf{Development:} An ongoing open-source effort using Asciidoc and Antora, welcoming community contributions
 \end{itemize}
 
-\item[\textbf{Tutorials}] % start of item
-\emph{Short Description: Hands-on or step-by-step guides for newcomers and practitioners.}
+\item[\textbf{Tutorials}]
+\emph{Short Description: Hands-on or step-by-step guides designed for newcomers and practitioners.}
 
 \begin{itemize}
-  \item Which modules or steps are included (environment setup, HPC job submission, scaling tests, performance benchmarks)?
-  \item Who is the main target audience (undergraduates, HPC engineers, domain scientists)?
-  \item Is there a link to any draft or existing tutorial materials?
+\item \textbf{Content:} Covers environment setup, using test cases, applications, and the programming interface
+\item \textbf{Target Audience:} Users of Feel++
+\item \textbf{Format:} Available as webpages and notebooks
+\item \textbf{Development:} An ongoing open-source effort using Asciidoc and Antora, welcoming community contributions
 \end{itemize}
 
-\item[\textbf{Initial Training}] % start of item
-\emph{Short Description: Introductory courses for academic levels from Bachelor to Doctoral.}
+\item[\textbf{Initial Training: Master 1 and 2}]
+\emph{Short Description: Introductory courses tailored for academic levels from Bachelor to Doctoral.}
 
 \begin{itemize}
-  \item For which academic level(s) (Bachelor, Master 1, Master 2, Doctoral) is this training designed?
-  \item Who is the intended audience, and what prerequisites (skills, background) are required?
-  \item How often will this training occur (once per semester, annually, on-demand)?
-\end{itemize}
-
-\item[\textbf{Initial Training::Master 1}] % start of item
-\emph{Short Description: Intermediate HPC modules suitable for first-year Master students.}
-
-\begin{itemize}
-  \item Which HPC or mathematical modules are covered in Master 1?
-  \item Will there be practical sessions or projects for hands-on experience?
-  \item What background or prerequisites are expected for participants?
-\end{itemize}
-
-\item[\textbf{Initial Training::Master 2}] % start of item
-\emph{Short Description: Advanced HPC topics or specialized algorithms for Master 2.}
-
-\begin{itemize}
-  \item What advanced HPC topics or specialized algorithms are taught in Master 2?
-  \item Are there collaborative projects (internships, research labs) integrated?
-  \item Which industry or research partners are involved in these trainings?
+\item \textbf{Academic Levels:} Master 1, Master 2, Doctoral
+\item \textbf{Target Audience:} Students focused on applied mathematics or application-oriented fields
+\item \textbf{Frequency:} Offered 1 to 2 times per semester
 \end{itemize}
 
 \end{description}
 
-
 \subsubsection{Next Steps for Feel++}
 \label{sec:Feel++:next-steps}
 
-Below are some guiding questions to help outline the next steps for training with Feel++:
+To advance the training initiatives for Feel++, we have identified several key areas of focus.
+While some of these steps are already underway or have initial contributions, the following sections outline our strategic goals and the additional steps we plan to take to further enhance our training programs:
 \begin{itemize}
-    \item What new training content or updates are planned for Feel++ in the upcoming milestones?
-    \item How will the training materials be updated to incorporate the latest exascale techniques and user feedback?
-    \item Which new delivery formats (e.g., webinars, interactive sessions, hands-on workshops) should be introduced?
-    \item What additional documentation or support tools are needed to help users get started or deepen their expertise?
-    \item How can we better integrate training activities with academic and industrial outreach efforts?
+    \item \textbf{New Training Content:}
+    \begin{itemize}
+        \item \textbf{Videos:} Develop a series of instructional videos that cover basic to advanced topics in Feel++. These videos can be hosted on platforms like YouTube or integrated into the documentation website.
+        \item \textbf{Automated Tutorial Generation:} Implement tools that automatically generate tutorials based on new features or updates in Feel++. This can include scripts that create step-by-step guides from code comments or documentation.
+        \item \textbf{Documentation Updates:} Regularly update the documentation to reflect the latest features, improvements, and best practices. Ensure that the updates are communicated to the user community through newsletters or announcements.
+        \item \textbf{Creation for Upcoming Releases:} Prepare training materials in advance for upcoming releases. This can include beta testing guides, release notes, and migration tutorials to help users transition smoothly to new versions.
+    \end{itemize}
+
+    \item \textbf{Incorporating Exascale Techniques and User Feedback:}
+    \begin{itemize}
+        \item \textbf{Performance Benchmarking:} Utilize the \texttt{feelpp.benchmarking} framework to systematically document the performance of Feel++ and its components. This will help in identifying areas for optimization and improvement.
+        \item \textbf{User Feedback Loop:} Establish a structured feedback loop where users can report issues, suggest improvements, and share their experiences. Regularly review this feedback to update training materials and address common challenges.
+        \item \textbf{Community Contributions:} Encourage community contributions to the documentation and tutorials. This can help in keeping the materials up-to-date and relevant to a broader audience.
+        \item \textbf{Exascale Techniques:} Incorporate the latest exascale computing techniques into the training materials. This can include parallel programming paradigms, optimizing for large-scale simulations, and leveraging high-performance computing resources.
+    \end{itemize}
+
+    \item \textbf{Expanding Delivery Formats:}
+    \begin{itemize}
+        \item \textbf{Webinars:} Organize regular webinars that cover specific topics or new features in Feel++. Invite experts from academia and industry to share their insights and experiences.
+        \item \textbf{Interactive Sessions:} Conduct interactive sessions where participants can engage in hands-on activities, ask questions, and receive real-time feedback. These sessions can be held online or in-person.
+        \item \textbf{Hands-On Workshops:} Host workshops that focus on practical applications of Feel++. These workshops can be tailored to different skill levels and can include exercises and projects that participants can work on.
+    \end{itemize}
+
+    \item \textbf{Enhancing Support Tools:}
+    \begin{itemize}
+        \item \textbf{Interactive Documentation:} Enhance the documentation with interactive elements such as code snippets, live examples, and embedded videos. This can make the learning experience more engaging and effective. 
+        \item \textbf{FAQ Section:} Create a Frequently Asked Questions (FAQ) section that addresses common queries and issues. This can serve as a quick reference for users and reduce the need for support requests.
+        \item \textbf{Forums and Discussion Boards:} Establish forums or discussion boards where users can ask questions, share knowledge, and collaborate on projects. This can foster a sense of community and encourage peer-to-peer learning.
+        \item \textbf{Support Tickets:} Leverage GitHub Issues to implement a support ticket system where users can report issues or request assistance. Customize GitHub Issues with templates and labels to streamline the process of tracking and resolving user queries efficiently. This approach aligns with the open-source nature of Feel++ and encourages community involvement in support and development.
+    \end{itemize}
+
+    \item \textbf{Integrating Training with Academic and Industrial Outreach:}
+        We propose the following strategy for integrating training activities with academic and industrial outreach efforts, some of which are already in place:
+    \begin{itemize}
+        \item \textbf{Academic Outreach:}
+        \begin{itemize}
+            \item Establish partnerships with universities for collaborative projects and guest lectures.
+            \item Offer semester projects and internships to students for hands-on experience.
+            \item Organize or participate in workshops and hackathons at academic conferences.
+            \item Develop course modules for academic integration.
+        \end{itemize}
+        \item \textbf{Industrial Outreach:}
+        \begin{itemize}
+            \item Partner with industries for collaborative research and consulting services.
+            \item Offer semester projects and internships to students for hands-on experience.
+            \item Organize workshops and online courses tailored to industry professionals.
+        \end{itemize}
+        \item \textbf{General Strategies:}
+        \begin{itemize}
+            \item Share success stories and case studies on the website and social media. If enough material is available, consider creating a dedicated portal for this purpose.
+            \item Establish a feedback loop for continuous improvement of training materials.
+            \item Apply for research grants to support outreach efforts.
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
