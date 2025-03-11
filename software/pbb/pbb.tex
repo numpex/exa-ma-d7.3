@@ -24,33 +24,97 @@ nouredine.melab@univ-lille.fr\\
         \rowcolor{numpexlightergray}\textbf{Supported Architectures} & \begin{tabular}{l}
 CPU or GPU\\
 \end{tabular} \\
-        \rowcolor{white}\textbf{Repository} & \href{https://gitlab.inria.fr/jgmys/permutationbb}{https://gitlab.inria.fr/jgmys/permutationbb} \\
-        \rowcolor{numpexlightergray}\textbf{License} & \begin{tabular}{l}
+        \rowcolor{white}\textbf{Repository} & \begin{tabular}{l}
+\href{https://gitlab.inria.fr/jgmys/permutationbb}{https://gitlab.inria.fr/jgmys/permutationbb} \\
+\href{https://github.com/Guillaume-Helbecque/P3D-DFS}{https://github.com/Guillaume-Helbecque/P3D-DFS} \\
+\end{tabular} \\
+    \rowcolor{numpexlightergray}\textbf{License} & \begin{tabular}{l}
 OSS: Cecill-*\\
 \end{tabular} \\
         \rowcolor{white}\textbf{Training} & \begin{tabular}{l}
-None\\
+Documentation\\
+Tutorial \\
 \end{tabular} \\
         \bottomrule
     \end{tabular}
-    No training information provided.
+
+    %%\begin{table}[!ht]
+%%    \centering
+    {
+    \setlength{\parindent}{0pt}
+    \def\arraystretch{1.25}
+    \arrayrulecolor{numpexgray}
+    {\fontsize{9}{11}\selectfont
+    \begin{tabular}{!{\color{numpexgray}\vrule}p{0.20\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.40\textwidth}
+                    !{\color{numpexgray}\vrule}p{0.35\textwidth}
+                    !{\color{numpexgray}\vrule}}
+    \rowcolor{numpexgray}{\rule{0pt}{2.5ex}\color{white}\bf Training Category}
+         & {\rule{0pt}{2.5ex}\color{white}\bf Description}
+         & {\rule{0pt}{2.5ex}\color{white}\bf URL/Links} \\
+\rowcolor{white}Documentation & User manuals, reference guides, and detailed usage instructions. & \begin{tabular}{p{6cm}}
+\url{https://gitlab.inria.fr/jgmys/permutationbb/-/blob/master/README.md}\\
+\url{https://github.com/Guillaume-Helbecque/P3D-DFS/blob/main/README.md}\\
+\end{tabular} \\
+\rowcolor{numpexlightergray}Tutorial & Introduction and code demo for newcomers and practitioners. & \url{https://www.youtube.com/watch?v=jMQ-WYRz-AQ} \\
+\bottomrule
+    \end{tabular}
+    }}
+%    \caption{pBB Training}
+%\end{table}
+
     }}
     \caption{pBB Information}
 \end{table}
 
 
 \paragraph{Additional Details:}
-% No training categories specified.
 
+\begin{description}
+
+\item[\textbf{Documentation}]
+\emph{Short Description: User manuals, reference guides, and detailed usage instructions.}
+
+\begin{itemize}
+\item \textbf{Content:} Installation, usage, advanced features, benchmarking, test cases, and API
+\item \textbf{Format:} Web pages and runnable Markdown-commented examples
+\item \textbf{Development:} An ongoing open-source effort in Markdown and GitHub README files, welcoming community contributions
+\end{itemize}
+
+\item[\textbf{Tutorial}]
+\emph{Short Description: Introduction and code demo for newcomers and practitioners.}
+
+\begin{itemize}
+\item \textbf{Content:} Usage and applications of specific features of pBB
+\item \textbf{Format:} Youtube video, part of the ChapelCon '24 video series.
+\item \textbf{Target Audience:} Operation research community, newcomers to pBB, Chapel users
+\end{itemize}
+
+\end{description}
 
 \subsubsection{Next Steps for pBB}
 \label{sec:pBB:next-steps}
 
-Below are some guiding questions to help outline the next steps for training with pBB:
+To further develop the training initiatives for pBB, we have identified several key focus areas.
+While some efforts are already in progress or have initial contributions, the following sections present our strategic goals and the additional steps needed to strengthen our training programs.
+
 \begin{itemize}
-    \item What new training content or updates are planned for pBB in the upcoming milestones?
-    \item How will the training materials be updated to incorporate the latest exascale techniques and user feedback?
-    \item Which new delivery formats (e.g., webinars, interactive sessions, hands-on workshops) should be introduced?
-    \item What additional documentation or support tools are needed to help users get started or deepen their expertise?
-    \item How can we better integrate training activities with academic and industrial outreach efforts?
+    \item \textbf{New Training Content:}
+    \begin{itemize}
+        \item \textbf{Documentation Updates:} Regularly update the documentation to reflect the latest features, improvements, and best practices.
+        \item \textbf{Creation for Upcoming Releases:} Prepare training materials in advance for upcoming releases. This can include release notes to help users transition smoothly to new versions.
+    \end{itemize}
+
+    \item \textbf{Incorporating Exascale Techniques and User Feedback:}
+    \begin{itemize}
+        \item \textbf{User Feedback Loop:} Establish a structured feedback loop where users can report issues, suggest improvements, and share their experiences. Regularly review this feedback to update training materials and address common challenges.
+        \item \textbf{Community Contributions:} Encourage community contributions to the documentation and tutorials. This can help in keeping the materials up-to-date and relevant to a broader audience.
+        \item \textbf{Exascale Techniques:} Incorporate the latest exascale computing techniques into the training materials. This can include parallel programming paradigms, optimizing for large-scale simulations, and leveraging high-performance computing resources.
+    \end{itemize}
+
+    \item \textbf{Enhancing Support Tools:}
+    \begin{itemize}
+        \item \textbf{Interactive Documentation:} Enhance the documentation with interactive elements such as code snippets or live examples. This can make the learning experience more engaging and effective.
+        \item \textbf{Support Tickets:} Leverage GitHub Issues to implement a support ticket system where users can report issues or request assistance. Customize GitHub Issues with templates and labels to streamline the process of tracking and resolving user queries efficiently. This approach aligns with the open-source nature of pBB and encourages community involvement in support and development.
+    \end{itemize}
 \end{itemize}
