@@ -93,9 +93,9 @@ create_release() {
     # Update CITATION and Zenodo files:
     NEW_VERSION=$(echo "$VERSION" | sed 's/^v//')
     CURRENT_DATE=$(date +%Y-%m-%d)
-    sed -i "s/^version: .*/version: $NEW_VERSION/" CITATION.cff
-    sed -i "s/^date-released: .*/date-released: $CURRENT_DATE/" CITATION.cff
-    sed -i "s/\"version\": *\"[^\"]*\"/\"version\": \"$NEW_VERSION\"/" .zenodo.json
+    sed -i '' "s/^version: .*/version: $NEW_VERSION/" CITATION.cff
+    sed -i '' "s/^date-released: .*/date-released: $CURRENT_DATE/" CITATION.cff
+    sed -i '' "s/\"version\": *\"[^\"]*\"/\"version\": \"$NEW_VERSION\"/" .zenodo.json
     echo "Citation files updated for release $NEW_VERSION."
     # -------------------------
 
