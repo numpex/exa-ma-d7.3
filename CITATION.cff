@@ -1,82 +1,62 @@
-cff-version: 1.2.0 
+cff-version: 1.2.0
 message: If you use this software, please cite it as below.
 authors:
-- family-names: Alliez
-  given-names: Pierre
-  affiliation: "INRIA"
-  email: pierre.alliez@inria.fr
-- family-names: Chabannes
-  given-names: Vincent
-  affiliation: "University of Strasbourg"
-  email: vincent.chabannes@cemosis.fr
-- family-names: Faucher
-  given-names: Florian
-  affiliation: "INRIA"
-  email: florian.faucher@inria.fr
-- family-names: Franck
-  given-names: Emmanuel
-  affiliation: "INRIA"
-  email: emmanuel.franck@inria.fr
-- family-names: Georgiadis
-  given-names: Christos
-  affiliation: "INRIA"
-  email: christos.georgiadis@inria.fr
-- family-names: Gouarin
-  given-names: Loic
-  affiliation: "École Polytechnique"
-  email: lloic.gouarin@polytechnique.edu
-- family-names: Hecht
-  given-names: Frederic
-  affiliation: "Sorbonne Université"
-  email: frederic.hecht@sorbonne-universite.fr
-- family-names: Jamond
-  given-names: Olivier
-  affiliation: "CEA"
-  email: olivier.jamond@cea.fr
-- family-names: Jolivet
-  given-names: Pierre
-  affiliation: "Sorbonne Université"
-  email: pierre.jolivet@sorbonne-universite.fr
-- family-names: Jolivet
-  given-names: Pierre
-  affiliation: "CNRS"
-  email: pierre@joliv.et
-- family-names: Marait
-  given-names: Gilles
-  affiliation: "INRIA"
-  email: gilles.marait@inria.fr
-- family-names: Melab
-  given-names: Nouredine
-  affiliation: "University of Lille"
-  email: nouredine.melab@univ-lille.fr
-- family-names: Perlat
-  given-names: Jean-Philippe
-  affiliation: "CEA"
-  email: jean-philippe.perlat@cea.fr
 - family-names: Prud'homme
   given-names: Christophe
   orcid: 'https://orcid.org/0000-0003-2287-2961'
   affiliation: "University of Strasbourg"
   email: christophe.prudhomme@cemosis.fr
-- family-names: Talbi
-  given-names: El-Ghazali
+- family-names: Faucher
+  given-names: Florent
+  affiliation: "INRIA"
+  email: florian.faucher@inria.fr
+- family-names: Georgiadis
+  given-names: Christos
+  affiliation: "INRIA"
+  email: christos.georgiadis@inria.fr
+- family-names: Giraud
+  given-names: Luc
+  affiliation: "INRIA"
+  email: luc.giraud@inria.fr
+- family-names: Gouarin
+  given-names: Loic
+  affiliation: "CNRS, École Polytechnique"
+  email: loic.gouarin@polytechnique.edu
+- family-names: Helbecque
+  given-names: Guillaume
   affiliation: "University of Lille"
-  email: el-ghazali.talbi@univ-lille.fr
+  email: guillaume.helbecque@univ-lille.fr
+- family-names: Jolivet
+  given-names: Pierre
+  affiliation: "CNRS, Sorbonne Université"
+  email: pierre.jolivet@sorbonne-universite.fr
+- family-names: Marait
+  given-names: Gilles
+  affiliation: "INRIA"
+  email: gilles.marait@inria.fr
+- family-names: Michel-Dansac
+  given-names: Victor
+  affiliation: "INRIA"
+  email: victor.michel-dansac@inria.fr
 - family-names: Tournier
   given-names: Pierre-Henri
-  affiliation: "Sorbonne Université"
+  affiliation: "CNRS, Sorbonne Université"
   email: pierre-henri.tournier@sorbonne-universite.fr
+- family-names: Tordeux
+  given-names: Sébastien
+  affiliation: "University of Pau and the Adour Region"
+  email: sebastien.tordeux@univ-pau.fr
 title: "numpex/exa-ma-d7.3 - Benchmarking Analysis Report"
-version: 0.0.6
+version: 1.0.0
 abstract: >
-  This repository contains the deliverable D7.3 for the Benchmarking Analysis Report 
-  of the Exa-MA project. 
+  This repository contains the deliverable D7.3 for the Benchmarking Analysis Report
+  of the Exa-MA project.
 keywords:
   - HPC
   - Exascale
   - Benchmarking
 license: CC-BY-4.0
-date-released: 2024-09-27
+date-released: 2025-04-15
 url: "https://github.com/numpex/exa-ma-d7.3"
 references:
   - type: grant
