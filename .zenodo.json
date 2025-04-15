@@ -77,7 +77,7 @@
     ],
     "grants": [
         {
-            "id": "ANR-22-EXNU-0002",
+            "id": "10.13039/501100001665::ANR-22-EXNU-0002",
             "acronym": "Exa-MA",
             "program": "French National Research Agency",
             "project_name": "Methods and Algorithms for Exascale"
