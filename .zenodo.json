@@ -57,13 +57,13 @@
             "type": "ProjectMember"
         }
     ],
-    "title": "numpex/exa-ma-d7.3 - Benchmarking Analysis Report",
+    "title": "numpex/exa-ma-d7.3 - Training Report",
     "version": "1.0.1",
     "access_right": "open",
     "keywords": [
         "HPC",
         "Exascale",
-        "Benchmarking"
+        "Training"
     ],
     "license": "CC-BY-4.0",
     "upload_type": "software",

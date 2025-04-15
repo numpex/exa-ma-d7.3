@@ -46,15 +46,15 @@ authors:
   given-names: Sébastien
   affiliation: "University of Pau and the Adour Region"
   email: sebastien.tordeux@univ-pau.fr
-title: "numpex/exa-ma-d7.3 - Benchmarking Analysis Report"
+title: "numpex/exa-ma-d7.3 - Training Report"
 version: 1.0.1
 abstract: >
-  This repository contains the deliverable D7.3 for the Benchmarking Analysis Report
+  This repository contains the deliverable D7.3 for the Training Report
   of the Exa-MA project.
 keywords:
   - HPC
   - Exascale
-  - Benchmarking
+  - Training
 license: CC-BY-4.0
 date-released: 2025-04-15
 url: "https://github.com/numpex/exa-ma-d7.3"
