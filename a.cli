@@ -89,16 +89,23 @@ create_release() {
     # Checkout the tag to trigger post-commit hook to update gitinfo2 info file
     git checkout
 
-    # Show the reltag line of .git/gitHeadInfo.gin
-    grep reltag .git/gitHeadInfo.gin
+    # -------------------------
+    # Update CITATION and Zenodo files:
+    NEW_VERSION=$(echo "$VERSION" | sed 's/^v//')
+    CURRENT_DATE=$(date +%Y-%m-%d)
+    sed -i "s/^version: .*/version: $NEW_VERSION/" CITATION.cff
+    sed -i "s/^date-released: .*/date-released: $CURRENT_DATE/" CITATION.cff
+    sed -i "s/\"version\": *\"[^\"]*\"/\"version\": \"$NEW_VERSION\"/" .zenodo.json
+    echo "Citation files updated for release $NEW_VERSION."
+    # -------------------------
 
+    # Continue with the rest of the process:
     cp .git/gitHeadInfo.gin gitHeadLocal.gin
-
-    git add gitHeadLocal.gin
-    git commit -m "Updated gitHeadLocal.gin for release $VERSION"
+    git add gitHeadLocal.gin CITATION.cff .zenodo.json
+    git commit -m "Updated citation files for release $VERSION"
     git tag -f -a "$VERSION" -m "Release $VERSION"
 
-    # Push the changes and the tags
+    # Push changes and tags
     git push origin --follow-tags
 
     echo "Release $VERSION created and pushed successfully."
