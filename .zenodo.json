@@ -1,0 +1,86 @@
+{
+    "creators": [
+        {
+            "name": "Prud'homme, Christophe",
+            "orcid": "https://orcid.org/0000-0003-2287-2961",
+            "affiliation": "University of Strasbourg",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Faucher, Florent",
+            "affiliation": "INRIA",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Georgiadis, Christos",
+            "affiliation": "INRIA",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Giraud, Luc",
+            "affiliation": "INRIA",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Gouarin, Loic",
+            "affiliation": "CNRS, École Polytechnique",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Helbecque, Guillaume",
+            "affiliation": "University of Lille",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Jolivet, Pierre",
+            "affiliation": "CNRS, Sorbonne Université",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Marait, Gilles",
+            "affiliation": "INRIA",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Michel-Dansac, Victor",
+            "affiliation": "INRIA",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Tournier, Pierre-Henri",
+            "affiliation": "CNRS, Sorbonne Université",
+            "type": "ProjectMember"
+        },
+        {
+            "name": "Tordeux, Sébastien",
+            "affiliation": "University of Pau and the Adour Region",
+            "type": "ProjectMember"
+        }
+    ],
+    "title": "numpex/exa-ma-d7.3 - Benchmarking Analysis Report",
+    "version": "1.0.1",
+    "access_right": "open",
+    "keywords": [
+        "HPC",
+        "Exascale",
+        "Benchmarking"
+    ],
+    "license": "CC-BY-4.0",
+    "upload_type": "software",
+    "language": "eng",
+    "related_identifiers": [
+        {
+            "identifier": "https://github.com/numpex/exa-ma-d7.3",
+            "relation": "isSupplementTo",
+            "resource_type": "software"
+        }
+    ],
+    "grants": [
+        {
+            "id": "ANR-22-EXNU-0002",
+            "acronym": "Exa-MA",
+            "program": "French National Research Agency",
+            "project_name": "Methods and Algorithms for Exascale"
+        }
+    ]
+}
