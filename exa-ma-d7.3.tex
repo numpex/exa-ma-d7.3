@@ -20,7 +20,7 @@
 \usepackage{import}
 \usepackage{booktabs} % For nicer tables
 \usepackage{geometry}
-\usepackage{tabularx,longtable}
+\usepackage{tabularx,xltabular}
 \usepackage{paralist} % For compactitem
 \usepackage{multirow} % For multirow in tables
 \usepackage{pgf-pie}  % For pie charts
@@ -32,6 +32,7 @@
 \DeclareSIUnit\mmHg{mmHg}
 \usepackage{currfile} % Required for getting the current file name
 \usepackage{pgfplots}
+\usepackage{pdflscape}
 \usepackage{pgfplotstable}
 \AtBeginEnvironment{tikzpicture}{\tracinglostchars=0\relax}
 \pgfplotsset{compat=newest}
@@ -127,8 +128,8 @@
 \delivResponsible{UNISTRA}
 
 % Deliverable Version, Contractual and Actual Date, Dissemination Level, Type
-\delivVersion{v0.5.0}
-\ContractualDate{11/03/2025}
+\delivVersion{v1.0.0}
+\ContractualDate{10/04/2025}
 \ActualDate{\today}
 \delivDissLevel{PU} % PU, PP, RE, CO
 \delivType{Report}
@@ -137,18 +138,19 @@
 \delivAuthor{Christophe Prud'homme (UNISTRA)}
 
 % List of Co-Authors (all other co-authors should be listed here)
-\delivFPAuthor{Florent Faucher (INRIA), Christos Georgiadis (INRIA), Luc Giraud (INRIA), Loic Gouarin (CNRS), Guillaume Helbecque (U Lille), Pierre Jolivet (CNRS, Paris Sorbonne), Gilles Marait (INRIA), Victor Michel Dansac (INRIA), Pierre Henri Tournier (SU), Sébastien Tordeux (UPAU)}
+\delivFPAuthor{Florent Faucher (INRIA), Christos Georgiadis (INRIA), Luc Giraud (INRIA), Loic Gouarin (CNRS, EP), Guillaume Helbecque (U Lille), Pierre Jolivet (CNRS, SU), Gilles Marait (INRIA), Victor Michel Dansac (INRIA), Pierre-Henri Tournier (CNRS, SU), Sébastien Tordeux (UPPA)}
 
 % Provision of Keywords (about 5-10)
 \delivKeywords{HPC, Exascale, Benchmarking, Software, Training}
 
 
 % Deliverable Status
-\delivStatus{d} %% d = draft, f = final, s = submitted
+\delivStatus{s} %% d = draft, f = final, s = submitted
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Change Log
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\istChange{10/04/2025}{v1.0.0}{Pierre Jolivet (CNRS, SU), Christophe Prud'homme (UNISTRA), Sébastien Tordeux (UPPA)}{final version and updated master track information}
 \istChange{11/03/2025}{v0.5.0}{Victor Michel Dansac (INRIA), Florent Faucher (INRIA), Luc Giraud (INRIA), Loic Gouarin (CNRS), Guillaume Helbecque (U Lille), Gilles Marait (INRIA), Christophe Prud'homme (UNISTRA)}{added software training information: Composyx, Hawen, pBB, Samurai, Scimba}
 \istChange{02/03/2025}{v0.4.0}{Pierre Jolivet (CNRS, Paris Sorbonne), Christophe Prud'homme (UNISTRA)}{added software training information: HPDDM}
 \istChange{11/02/2025}{v0.3.0}{Christos Georgiadis (INRIA), Christophe Prud'homme (UNISTRA), Pierre Henri Tournier (SU), Pierre Jolivet (CNRS, Paris Sorbonne)}{added software training information: CGAL, FreeFEM++ and Feel++}
